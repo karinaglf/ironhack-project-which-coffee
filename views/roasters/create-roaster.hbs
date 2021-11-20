@@ -1,0 +1,33 @@
+<h2>Create new roaster</h2>
+
+<form id="form" action="/roasters/create-roaster" method="POST">
+  <div class="mb-3">
+    <label for="nameInput" class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" id="nameInput">
+  </div>
+  <div class="mb-3">
+    <label for="countryInput" class="form-label">Country</label>
+    <input type="text" name="country" class="form-control" id="countryInput">
+  </div>
+  <div class="mb-3">
+    <label for="cityInput" class="form-label">City</label>
+    <input type="text" name="city" class="form-control" id="cityInput">
+  </div>
+<div class="mb-3">
+    <label for="websiteInput" class="form-label">Website</label>
+    <input type="text" name="website" class="form-control" id="websiteInput">
+  </div>
+
+  <div class="custom-file">
+    <input name="logo" type="file" class="custom-file-input" id="imageFile">
+    <label class="custom-file-label" for="imageFile">Choose file</label>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Create roaster</button>
+</form>
+
+{{!-- error message display: --}} 
+
+{{#if errorMessage}}
+  <div class="error-message">{{ errorMessage }}</div>
+{{/if}}

@@ -1,44 +1,44 @@
-require("dotenv").config();
-const mongoose = require("mongoose");
-const User = require("./../models/User.model");
-const Coffee = require("./../models/Coffee.model");
-const Roaster = require("./../models/Roaster.model");
+require('dotenv').config();
+const mongoose = require('mongoose');
+const User = require('./../models/User.model');
+const Coffee = require('./../models/Coffee.model');
+const Roaster = require('./../models/Roaster.model');
 
 // seed data
 
 const coffees = [
   {
-    name: "test 1",
-    process: "natural",
-    originCountry: "Brazil",
-    variety: "arabica",
-    roastType: ["filter"],
-    flavor: "cherries",
+    name: 'test 1',
+    process: 'natural',
+    originCountry: 'Brazil',
+    variety: 'arabica',
+    roastType: ['filter'],
+    flavor: 'cherries',
   },
   {
-    name: "test 2",
-    process: "washed",
-    originCountry: "Brazil",
-    variety: "arabica",
-    roastType: ["filter", "espresso"],
-    flavor: "mango",
+    name: 'test 2',
+    process: 'washed',
+    originCountry: 'Brazil',
+    variety: 'arabica',
+    roastType: ['filter', 'espresso'],
+    flavor: 'mango',
   },
 ];
 
 const users = [
   {
-    name: "Clara",
-    username: "clara123",
-    email: "clara123@mail.com",
-    password: "clara123@mail.com",
+    name: 'Clara',
+    username: 'clara123',
+    email: 'clara123@mail.com',
+    password: 'clara123@mail.com',
     isRoaster: true,
     favoriteCoffees: [],
   },
   {
-    name: "Karina",
-    username: "karina123",
-    email: "karina123@mail.com",
-    password: "karina123@mail.com",
+    name: 'Karina',
+    username: 'karina123',
+    email: 'karina123@mail.com',
+    password: 'karina123@mail.com',
     isRoaster: true,
     favoriteCoffees: [],
   },
@@ -46,30 +46,30 @@ const users = [
 
 const roasters = [
   {
-    name: "Clara",
+    name: 'Clara',
     location: {
-      city: "Lisboa",
-      country: "Portugal",
+      city: 'Recife',
+      country: 'Brazil',
     },
-    logo: "",
-    website: "clara.com",
+    logo: '',
+    website: 'clara.com',
     coffees: [],
   },
   {
-    name: "Karina",
+    name: 'Karina',
     location: {
-      city: "Lisboa",
-      country: "Portugal",
+      city: 'Lisboa',
+      country: 'Portugal',
     },
-    logo: "",
-    website: "karina.com",
+    logo: '',
+    website: 'karina.com',
     coffees: [],
   },
 ];
 
 const MONGO_URI =
   process.env.MONGODB_URI ||
-  "mongodb://localhost/ironhack-project-which-coffee";
+  'mongodb://localhost/ironhack-project-which-coffee';
 
 let coffeeDocuments;
 mongoose
@@ -96,5 +96,5 @@ mongoose
     mongoose.connection.close();
   })
   .catch((err) => {
-    console.error("Error connecting to mongo: ", err);
+    console.error('Error connecting to mongo: ', err);
   });
