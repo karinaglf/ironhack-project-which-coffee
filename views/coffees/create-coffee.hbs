@@ -1,0 +1,64 @@
+<h2>Create new coffee</h2>
+
+<form id="form" action="/create-coffee" method="POST">
+  <div class="mb-3">
+    <label for="nameInput" class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" id="nameInput">
+  </div>
+<div class="mb-3">
+    <label for="processInput" class="form-label">Process</label>
+    <select name='process' class="form-select" aria-label="Default select example">
+        <option selected>Choose a process</option>
+        <option value="washed">Washed</option>
+        <option value="natural">Natural</option>
+        <option value="honey">Honey</option>
+        <option value="other">Other</option>
+    </select>
+  </div>
+<div class="mb-3">
+    <label for="originCountryInput" class="form-label">Origin Country</label>
+    <select name='originCountry' class="form-select" aria-label="Default select example">
+        <option selected>Choose an origin country</option>
+        <option value="washed">Brazil</option>
+        <option value="natural">Colombia</option>
+        <option value="honey">Ethiopia</option>
+        <option value="other">Costa Rica</option>
+        <option value="other">Rwanda</option>
+        <option value="other">Kenya</option>
+        <option value="other">Other</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="varietyInput" class="form-label">Variety</label>
+    <input type="text" name="variety" class="form-control" id="varietyInput">
+  </div>
+  <div class="mb-3">
+    <label for="roastTypeInput" class="form-label">Roast Type</label>
+    <select name='roastType' class="form-select" aria-label="Default select example">
+        <option selected>Choose a roast type</option>
+        <option value="washed">Filter</option>
+        <option value="natural">Espresso</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="flavorInput" class="form-label">Flavor</label>
+    <input type="text" name="flavor" class="form-control" id="flavorInput">
+  </div>
+  <div class="mb-3">
+    <label for="roasterInput" class="form-label">Roaster</label>
+    <input type="text" name="roaster" class="form-control" id="roasterInput">
+  </div>
+
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="imageFile">
+    <label class="custom-file-label" for="imageFile">Choose file</label>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Create coffee</button>
+</form>
+
+{{!-- error message display: --}} 
+
+{{#if errorMessage}}
+  <div class="error-message">{{ errorMessage }}</div>
+{{/if}}

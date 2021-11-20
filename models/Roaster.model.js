@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const roasterSchema = new Schema({
   name: { type: String, required: true },
@@ -6,11 +6,11 @@ const roasterSchema = new Schema({
     city: { type: String, required: true },
     country: { type: String, required: true },
   },
-  logo: { type: String, default: "../images/logo.png" },
+  logo: { type: String, default: '/images/img-logo-placeholder.jpeg' },
   website: { type: String, required: true },
-  coffees: [{ type: Schema.Types.ObjectId, ref: "Coffee" }],
+  coffees: [{ type: Schema.Types.ObjectId, ref: 'Coffee' }],
 });
 
-const Roaster = model("Roaster", roasterSchema);
+const Roaster = model('Roaster', roasterSchema);
 
 module.exports = Roaster;
