@@ -30,7 +30,7 @@ router.get('/coffee-search', (req, res) => {
     });
 });
 
-// GET   /coffees/:coffeeId
+// GET   /coffees/detail/:coffeeId
 router.get('/coffees/detail/:coffeeId', (req, res) => {
   console.log('req.params', req.params);
   const coffeeId = req.params.coffeeId;
@@ -45,5 +45,48 @@ router.get('/coffees/detail/:coffeeId', (req, res) => {
 router.get('/coffees/create-coffee', (req, res) => {
   res.render('coffees/create-coffee');
 });
+
+//POST - /coffees/create-coffee - Send and save data from form to database
+router.post('/coffees/create-coffee', (req, res) => {
+    const { name, process, originCountry, variety, roastType, flavor, roaster, image } = req.body;
+    console.log(req.body);
+  
+    Coffee.create({ name, process, originCountry, variety, roastType, flavor, roaster, image })
+      .then((createdCoffee) => {
+        res.redirect(`/coffees/detail/${createdCoffee._id}`);
+      })
+      .catch((err) => console.log('Error while creating a coffee: ', err));
+  });
+
+//GET /coffees/edit-coffee/:coffeeId - Show the Edit Form
+router.get('/coffees/edit-coffee/:coffeeId', (req, res, next) => {
+    Coffee.findById(req.params.coffeeId)
+    .then(foundCoffee => {
+        res.render('coffees/edit-coffee', {coffee: foundCoffee})
+    })
+    .catch( err => console.log("Error while getting the coffee for the edit form: ", err))
+  })
+
+// POST  /coffees/edit-coffee/:coffeeId
+router.post('/coffees/edit-coffee/:coffeeId', (req, res) => {
+    const coffeeId = req.params.coffeeId;
+
+    Coffee.findByIdAndUpdate(coffeeId, req.body)
+    .then( updatedCoffee => {
+      // if everything is fine, take me back to the details page so we can see the changes we made
+      res.redirect(`/coffees/detail/${coffeeId}`);
+    } )
+    .catch( err => console.log("Error while getting the updated coffee: ", err))
+  })
+
+// POST - Delete Coffees
+router.post('/coffees/detail/:coffeeId/delete', (req, res) => {
+    Coffee.findByIdAndRemove(req.params.coffeeId)
+      .then(() => {
+        res.redirect('/coffees');
+      })
+      .catch((err) => console.log('Error while deleting a coffee: ', err));
+  });
+
 
 module.exports = router;

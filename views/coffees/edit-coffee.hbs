@@ -1,14 +1,14 @@
-<h2>Create new coffee</h2>
+<h2>Edit Coffee</h2>
 
-<form id="form" action="/coffees/create-coffee" method="POST">
+<form id="form" action="/coffees/edit-coffee/{{coffee._id}}" method="POST">
   <div class="mb-3">
     <label for="nameInput" class="form-label">Name</label>
-    <input type="text" name="name" class="form-control" id="nameInput">
+    <input type="text" name="name" class="form-control" id="nameInput" value={{coffee.name}}>
   </div>
 <div class="mb-3">
     <label for="processInput" class="form-label">Process</label>
     <select name='process' class="form-select" aria-label="Default select example">
-        <option selected>Choose a process</option>
+        <option value={{coffee.process}} selected>{{coffee.process}}</option>
         <option value="washed">Washed</option>
         <option value="natural">Natural</option>
         <option value="honey">Honey</option>
@@ -18,7 +18,7 @@
 <div class="mb-3">
     <label for="originCountryInput" class="form-label">Origin Country</label>
     <select name='originCountry' class="form-select" aria-label="Default select example">
-        <option selected>Choose an origin country</option>
+        <option value={{coffee.originCountry}} selected>{{coffee.originCountry}}</option>
         <option value="Brazil">Brazil</option>
         <option value="Colombia">Colombia</option>
         <option value="Ethiopia">Ethiopia</option>
@@ -30,19 +30,19 @@
   </div>
   <div class="mb-3">
     <label for="varietyInput" class="form-label">Variety</label>
-    <input type="text" name="variety" class="form-control" id="varietyInput">
+    <input type="text" name="variety" class="form-control" id="varietyInput" value={{coffee.variety}}>
   </div>
   <div class="mb-3">
     <label for="roastTypeInput" class="form-label">Roast Type</label>
     <select name='roastType' class="form-select" aria-label="Default select example">
-        <option selected>Choose a roast type</option>
+        <option value={{coffee.roastType}} selected>{{coffee.roastType}}</option>
         <option value="filter">Filter</option>
         <option value="espresso">Espresso</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="flavorInput" class="form-label">Flavor</label>
-    <input type="text" name="flavor" class="form-control" id="flavorInput">
+    <input type="text" name="flavor" class="form-control" id="flavorInput" value={{coffee.flavor}}>
   </div>
 
   <div class="custom-file">
@@ -50,7 +50,7 @@
     <label class="custom-file-label" for="imageFile">Choose file</label>
   </div>
   
-  <button type="submit" class="btn btn-primary">Create coffee</button>
+  <button type="submit" class="btn btn-primary">Edit coffee</button>
 </form>
 
 {{!-- error message display: --}} 
