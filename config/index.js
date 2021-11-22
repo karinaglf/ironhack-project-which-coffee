@@ -51,7 +51,7 @@ module.exports = (app) => {
 
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || 'irohack123',
+      secret: process.env.SESSION_SECRET || 'ironhack123',
       cookie: { maxAge: 3600000 * 30 }, //1 day * 30 (in milliseconds)
       resave: true,
       saveUninitialized: false,

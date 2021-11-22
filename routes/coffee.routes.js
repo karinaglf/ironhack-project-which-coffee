@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Coffee = require('../models/Coffee.model');
 const fileUploader = require('../config/cloudinary.config');
 const User = require('./../models/User.model');
+const isRoaster = require('./../middleware/isRoaster');
 
 // GET - Show all coffees list
 
@@ -44,7 +45,7 @@ router.get('/coffees/detail/:coffeeId', (req, res) => {
 });
 
 //GET /coffees/create-coffee
-router.get('/coffees/create-coffee', (req, res) => {
+router.get('/coffees/create-coffee', isRoaster, (req, res) => {
   res.render('coffees/create-coffee');
 });
 
@@ -158,10 +159,8 @@ router.post('/coffees/detail/:coffeeId/add-favorite', (req, res) => {
     { new: true }
   )
     .then((theUser) => {
-      //theUser.favoriteCoffees.push(theCoffee);
       console.log('this is the current favorite coffees list', theUser);
       res.redirect('/profile');
-      //return  User.findById(currentUser).populate('favoriteCoffees')
     })
     .catch((err) =>
       console.log('Error while adding a coffee to the favorites list: ', err)

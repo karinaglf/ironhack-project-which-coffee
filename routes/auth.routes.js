@@ -4,6 +4,7 @@ const User = require('./../models/User.model');
 const bcrypt = require('bcrypt');
 
 const isLoggedIn = require('./../middleware/isLoggedIn');
+const isRoaster = require('./../middleware/isRoaster');
 
 const saltRounds = 10;
 
@@ -22,7 +23,7 @@ router.get('/signup', (req, res) => {
 //POST /signup -
 
 router.post('/signup', (req, res) => {
-  const { username, email, password, isRoaster } = req.body;
+  const { username, email, password, profileType } = req.body;
   console.log('req.body', req.body);
 
   const usernameNotProvided = !username || username === '';
@@ -59,6 +60,7 @@ router.post('/signup', (req, res) => {
         username: username,
         password: hashedPassword,
         email: email,
+        profileType: profileType
       });
     })
     .then((createdUser) => {

@@ -19,14 +19,9 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {{#if userIsLoggedIn}}
             <li class="nav-item">
                <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="/signup">Sign Up</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="/login">Login</a>
             </li>
             <li class="nav-item">
                <a class="nav-link" href="/coffees">Coffees</a>
@@ -37,27 +32,41 @@
             <li class="nav-item">
                <a class="nav-link" href="/quiz">Take Quiz</a>
             </li>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  My Account
+               </a>
+               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/signup">My Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Favorite Coffees</a></li>
+                  <li><a class="dropdown-item" href="#">Suggested Coffee</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+               </ul>
+            {{else}}
             <li class="nav-item">
-               <a class="nav-link" href="/logout">Logout</a>
+               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="/profile">My Account</a>
+               <a class="nav-link" href="/coffees">Coffees</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/roasters">Roasters</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/quiz">Take Quiz</a>
             </li>
             <li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
+                  My Account
                </a>
                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
+                  <li><a class="dropdown-item" href="/login">Login</a></li>
                </ul>
             </li>
             </ul>
-            <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            {{/if}}
             </form>
          </div>
       </div>
