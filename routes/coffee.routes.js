@@ -69,6 +69,7 @@ router.post('/coffees/create-coffee', fileUploader.single('image'), (req, res) =
 router.get('/coffees/edit-coffee/:coffeeId', (req, res, next) => {
   Coffee.findById(req.params.coffeeId)
     .then((foundCoffee) => {
+      console.log(`foundCoffee`, foundCoffee)
       res.render('coffees/edit-coffee', { coffee: foundCoffee });
     })
     .catch((err) =>
