@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Roaster = require('../models/roaster.model');
+const Roaster = require('../models/Roaster.model');
 const fileUploader = require('../config/cloudinary.config');
 
 // GET - Show all roasters list

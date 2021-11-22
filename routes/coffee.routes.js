@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const Coffee = require('../models/coffee.model');
+const Coffee = require('../models/Coffee.model');
 const fileUploader = require('../config/cloudinary.config');
+const User = require('./../models/User.model');
 
 // GET - Show all coffees list
 
@@ -48,28 +49,49 @@ router.get('/coffees/create-coffee', (req, res) => {
 });
 
 //POST - /coffees/create-coffee - Send and save data from form to database
-router.post('/coffees/create-coffee', fileUploader.single('image'), (req, res) => {
-  const { name, process, originCountry, variety, roastType, flavor, roaster } = req.body;
-  
- //Check if there is any form input file to upload otherwise model default
- let image;
-  if (req.file) {
-    image = req.file.path;
-  }
+router.post(
+  '/coffees/create-coffee',
+  fileUploader.single('image'),
+  (req, res) => {
+    const {
+      name,
+      process,
+      originCountry,
+      variety,
+      roastType,
+      flavor,
+      roaster,
+    } = req.body;
 
-  Coffee.create({ name, process, originCountry, variety, roastType, flavor, roaster, image })
-    .then((createdCoffee) => {
-      console.log({createdCoffee})
-      res.redirect(`/coffees/detail/${createdCoffee._id}`);
+    //Check if there is any form input file to upload otherwise model default
+    let image;
+    if (req.file) {
+      image = req.file.path;
+    }
+
+    Coffee.create({
+      name,
+      process,
+      originCountry,
+      variety,
+      roastType,
+      flavor,
+      roaster,
+      image,
     })
-    .catch((err) => console.log('Error while creating a coffee: ', err));
-});
+      .then((createdCoffee) => {
+        console.log({ createdCoffee });
+        res.redirect(`/coffees/detail/${createdCoffee._id}`);
+      })
+      .catch((err) => console.log('Error while creating a coffee: ', err));
+  }
+);
 
 //GET /coffees/edit-coffee/:coffeeId - Show the Edit Form
 router.get('/coffees/edit-coffee/:coffeeId', (req, res, next) => {
   Coffee.findById(req.params.coffeeId)
     .then((foundCoffee) => {
-      console.log(`foundCoffee`, foundCoffee)
+      console.log(`foundCoffee`, foundCoffee);
       res.render('coffees/edit-coffee', { coffee: foundCoffee });
     })
     .catch((err) =>
@@ -78,24 +100,73 @@ router.get('/coffees/edit-coffee/:coffeeId', (req, res, next) => {
 });
 
 // POST  /coffees/edit-coffee/:coffeeId
-router.post('/coffees/edit-coffee/:coffeeId', fileUploader.single('image'), (req, res) => {
-  const coffeeId = req.params.coffeeId;
-  const { name, process, originCountry, variety, roastType, flavor, roaster, existingImage } = req.body;
+router.post(
+  '/coffees/edit-coffee/:coffeeId',
+  fileUploader.single('image'),
+  (req, res) => {
+    const coffeeId = req.params.coffeeId;
+    const {
+      name,
+      process,
+      originCountry,
+      variety,
+      roastType,
+      flavor,
+      roaster,
+      existingImage,
+    } = req.body;
 
-    //Check if there was an update on the image file 
+    //Check if there was an update on the image file
     if (req.file) {
       image = req.file.path;
     } else {
       image = existingImage;
     }
 
-    Coffee.findByIdAndUpdate( coffeeId, { name, process, originCountry, variety, roastType, flavor, roaster, image }, { new: true } )
-    .then( updatedCoffee => {
-      // if everything is fine, take me back to the details page so we can see the changes we made
-      res.redirect(`/coffees/detail/${coffeeId}`);
-    } )
-    .catch( err => console.log("Error while getting the updated coffee: ", err))
-  })
+    Coffee.findByIdAndUpdate(
+      coffeeId,
+      {
+        name,
+        process,
+        originCountry,
+        variety,
+        roastType,
+        flavor,
+        roaster,
+        image,
+      },
+      { new: true }
+    )
+      .then((updatedCoffee) => {
+        // if everything is fine, take me back to the details page so we can see the changes we made
+        res.redirect(`/coffees/detail/${coffeeId}`);
+      })
+      .catch((err) =>
+        console.log('Error while getting the updated coffee: ', err)
+      );
+  }
+);
+
+// POST - Add Coffee as Favorite
+router.post('/coffees/detail/:coffeeId/add-favorite', (req, res) => {
+  const theCoffee = req.params.coffeeId;
+  const currentUser = req.session.user._id;
+
+  User.findByIdAndUpdate(
+    currentUser,
+    { $push: { favoriteCoffees: theCoffee } },
+    { new: true }
+  )
+    .then((theUser) => {
+      //theUser.favoriteCoffees.push(theCoffee);
+      console.log('this is the current favorite coffees list', theUser);
+      res.redirect('/profile');
+      //return  User.findById(currentUser).populate('favoriteCoffees')
+    })
+    .catch((err) =>
+      console.log('Error while adding a coffee to the favorites list: ', err)
+    );
+});
 
 // POST - Delete Coffees
 router.post('/coffees/detail/:coffeeId/delete', (req, res) => {
