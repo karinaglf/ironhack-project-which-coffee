@@ -18,8 +18,7 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
   User.findById(user._id)
     .populate('favoriteCoffees')
     .then((foundedUser) => {
-      console.log(foundedUser);
-      res.render('user-profile', { user });
+      res.render('user-profile', {user: foundedUser });
     });
 });
 
