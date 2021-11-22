@@ -10,7 +10,12 @@ const MONGO_URI =
   "mongodb://localhost/ironhack-project-which-coffee";
 
 mongoose
-  .connect(MONGO_URI)
+  .connect(MONGO_URI, {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+})
   .then((x) => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
