@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Coffee = require('../models/coffee.model');
+const fileUploader = require('../config/cloudinary.config');
 
 // GET - Show all coffees list
 
@@ -47,31 +48,47 @@ router.get('/coffees/create-coffee', (req, res) => {
 });
 
 //POST - /coffees/create-coffee - Send and save data from form to database
-router.post('/coffees/create-coffee', (req, res) => {
-    const { name, process, originCountry, variety, roastType, flavor, roaster, image } = req.body;
-    console.log(req.body);
+router.post('/coffees/create-coffee', fileUploader.single('image'), (req, res) => {
+  const { name, process, originCountry, variety, roastType, flavor, roaster } = req.body;
   
-    Coffee.create({ name, process, originCountry, variety, roastType, flavor, roaster, image })
-      .then((createdCoffee) => {
-        res.redirect(`/coffees/detail/${createdCoffee._id}`);
-      })
-      .catch((err) => console.log('Error while creating a coffee: ', err));
-  });
+ //Check if there is any form input file to upload otherwise model default
+ let image;
+  if (req.file) {
+    image = req.file.path;
+  }
+
+  Coffee.create({ name, process, originCountry, variety, roastType, flavor, roaster, image })
+    .then((createdCoffee) => {
+      console.log({createdCoffee})
+      res.redirect(`/coffees/detail/${createdCoffee._id}`);
+    })
+    .catch((err) => console.log('Error while creating a coffee: ', err));
+});
 
 //GET /coffees/edit-coffee/:coffeeId - Show the Edit Form
 router.get('/coffees/edit-coffee/:coffeeId', (req, res, next) => {
-    Coffee.findById(req.params.coffeeId)
-    .then(foundCoffee => {
-        res.render('coffees/edit-coffee', {coffee: foundCoffee})
+  Coffee.findById(req.params.coffeeId)
+    .then((foundCoffee) => {
+      res.render('coffees/edit-coffee', { coffee: foundCoffee });
     })
-    .catch( err => console.log("Error while getting the coffee for the edit form: ", err))
-  })
+    .catch((err) =>
+      console.log('Error while getting the coffee for the edit form: ', err)
+    );
+});
 
 // POST  /coffees/edit-coffee/:coffeeId
-router.post('/coffees/edit-coffee/:coffeeId', (req, res) => {
-    const coffeeId = req.params.coffeeId;
+router.post('/coffees/edit-coffee/:coffeeId', fileUploader.single('image'), (req, res) => {
+  const coffeeId = req.params.coffeeId;
+  const { name, process, originCountry, variety, roastType, flavor, roaster, existingImage } = req.body;
 
-    Coffee.findByIdAndUpdate(coffeeId, req.body)
+    //Check if there was an update on the image file 
+    if (req.file) {
+      image = req.file.path;
+    } else {
+      image = existingImage;
+    }
+
+    Coffee.findByIdAndUpdate( coffeeId, { name, process, originCountry, variety, roastType, flavor, roaster, image }, { new: true } )
     .then( updatedCoffee => {
       // if everything is fine, take me back to the details page so we can see the changes we made
       res.redirect(`/coffees/detail/${coffeeId}`);
@@ -81,12 +98,11 @@ router.post('/coffees/edit-coffee/:coffeeId', (req, res) => {
 
 // POST - Delete Coffees
 router.post('/coffees/detail/:coffeeId/delete', (req, res) => {
-    Coffee.findByIdAndRemove(req.params.coffeeId)
-      .then(() => {
-        res.redirect('/coffees');
-      })
-      .catch((err) => console.log('Error while deleting a coffee: ', err));
-  });
-
+  Coffee.findByIdAndRemove(req.params.coffeeId)
+    .then(() => {
+      res.redirect('/coffees');
+    })
+    .catch((err) => console.log('Error while deleting a coffee: ', err));
+});
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Roaster = require('../models/roaster.model');
+const fileUploader = require('../config/cloudinary.config');
 
 // GET - Show all roasters list
 
@@ -47,23 +48,33 @@ router.get('/roasters/create-roaster', (req, res) => {
 });
 
 //POST - /roasters/create-roaster - Send and save data from form to database
-router.post('/roasters/create-roaster', (req, res) => {
-  const { name, country, city, logo, website, coffees } = req.body;
-  console.log(req.body);
+router.post(
+  '/roasters/create-roaster',
+  fileUploader.single('logo'),
+  (req, res) => {
+    const { name, country, city, website, coffees } = req.body;
+    console.log(req.body);
 
-  Roaster.create({
-    name,
-    'location.country': country,
-    'location.city': city,
-    logo,
-    website,
-    coffees,
-  })
-    .then((createdRoaster) => {
-      res.redirect(`/roasters/detail/${createdRoaster._id}`);
+    //Check if there is any form input file to upload otherwise model default
+    let logo;
+    if (req.file) {
+      logo = req.file.path;
+    }
+
+    Roaster.create({
+      name,
+      'location.country': country,
+      'location.city': city,
+      logo,
+      website,
+      coffees,
     })
-    .catch((err) => console.log('Error while creating a roaster: ', err));
-});
+      .then((createdRoaster) => {
+        res.redirect(`/roasters/detail/${createdRoaster._id}`);
+      })
+      .catch((err) => console.log('Error while creating a roaster: ', err));
+  }
+);
 
 //GET /roasters/edit-roaster/:roasterId - Show the Edit Form
 router.get('/roasters/edit-roaster/:roasterId', (req, res, next) => {
@@ -77,18 +88,34 @@ router.get('/roasters/edit-roaster/:roasterId', (req, res, next) => {
 });
 
 // POST  /roasters/edit-roaster/:roasterId
-router.post('/roasters/edit-roaster/:roasterId', (req, res) => {
-  const roasterId = req.params.roasterId;
+router.post(
+  '/roasters/edit-roaster/:roasterId',
+  fileUploader.single('logo'),
+  (req, res) => {
+    const roasterId = req.params.roasterId;
+    const { name, country, city, website, coffees, existingImage } = req.body;
 
-  Roaster.findByIdAndUpdate(roasterId, req.body)
-    .then((updatedRoaster) => {
-      // if everything is fine, take me back to the details page so we can see the changes we made
-      res.redirect(`/roasters/detail/${roasterId}`);
-    })
-    .catch((err) =>
-      console.log('Error while getting the updated roaster: ', err)
-    );
-});
+    //Check if there was an update on the logo file
+    if (req.file) {
+      logo = req.file.path;
+    } else {
+      logo = existingImage;
+    }
+
+    Roaster.findByIdAndUpdate(
+      roasterId,
+      { name, country, city, website, coffees, logo },
+      { new: true }
+    )
+      .then((updatedRoaster) => {
+        // if everything is fine, take me back to the details page so we can see the changes we made
+        res.redirect(`/roasters/detail/${roasterId}`);
+      })
+      .catch((err) =>
+        console.log('Error while getting the updated roaster: ', err)
+      );
+  }
+);
 
 // POST - Delete Roasters
 router.post('/roasters/detail/:roasterId/delete', (req, res) => {

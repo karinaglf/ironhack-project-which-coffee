@@ -1,6 +1,6 @@
 <h2>Edit Coffee</h2>
 
-<form id="form" action="/coffees/edit-coffee/{{coffee._id}}" method="POST">
+<form id="form" action="/coffees/edit-coffee/{{coffee._id}}" method="POST" enctype="multipart/form-data">
   <div class="mb-3">
     <label for="nameInput" class="form-label">Name</label>
     <input type="text" name="name" class="form-control" id="nameInput" value={{coffee.name}}>
@@ -47,6 +47,7 @@
 
   <div class="custom-file">
     <input name="image" type="file" class="custom-file-input" id="imageFile">
+    <input type="text" name="existingImage" hidden value="{{coffee.image}}">
     <label class="custom-file-label" for="imageFile">Choose file</label>
   </div>
   
