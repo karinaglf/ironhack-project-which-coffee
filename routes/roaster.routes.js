@@ -7,7 +7,7 @@ const fileUploader = require('../config/cloudinary.config');
 router.get('/roasters', (req, res) => {
   Roaster.find()
     .then((roastersList) => {
-      res.render('roasters/all-roasters', { roastersList });
+      res.render('roasters/roasters-listing', { roastersList });
     })
     .catch((err) => console.log('Error while displaying all roasters: ', err));
 });
@@ -25,7 +25,7 @@ router.get('/roaster-search', (req, res) => {
   }) //makes it case sensitive and looks for any letter present in the title
     .then((foundRoaster) => {
       //render the page and display the found coffees
-      res.render('roasters/roasters-search-result', {
+      res.render('roasters/roasters-listing', {
         roastersList: foundRoaster,
       });
     });

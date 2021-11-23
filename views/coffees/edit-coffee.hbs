@@ -44,7 +44,15 @@
     <label for="flavorInput" class="form-label">Flavor</label>
     <input type="text" name="flavor" class="form-control" id="flavorInput" value="{{coffee.flavor}}">
   </div>
-
+    <div class="mb-3">
+    <label for="roasterInput" class="form-label">Roaster</label>
+    <select name='roaster' class="form-select" aria-label="Default select example">
+        <option selected>{{coffee.roaster.name}}</option>
+        {{#each roasterList}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+  </div>
   <div class="custom-file">
     <input name="image" type="file" class="custom-file-input" id="imageFile">
     <input type="text" name="existingImage" hidden value="{{coffee.image}}">

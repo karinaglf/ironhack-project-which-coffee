@@ -11,7 +11,7 @@ router.get('/coffees', (req, res) => {
   Coffee.find()
     .populate('roaster')
     .then((coffeesList) => {
-      res.render('coffees/all-coffees', { coffeesList });
+      res.render('coffees/coffees-listing', { coffeesList });
     })
     .catch((err) => console.log('Error while displaying all coffees: ', err));
 });
@@ -29,7 +29,7 @@ router.get('/coffee-search', (req, res) => {
   }) //makes it case sensitive and looks for any letter present in the title
     .then((foundCoffees) => {
       //render the page and display the found coffees
-      res.render('coffees/coffees-search-result', {
+      res.render('coffees/coffees-listing', {
         coffeesList: foundCoffees,
       });
     });
@@ -96,9 +96,12 @@ router.post(
 //GET /coffees/edit-coffee/:coffeeId - Show the Edit Form
 router.get('/coffees/edit-coffee/:coffeeId', (req, res, next) => {
   Coffee.findById(req.params.coffeeId)
+    .populate('roaster')
     .then((foundCoffee) => {
-      console.log(`foundCoffee`, foundCoffee);
-      res.render('coffees/edit-coffee', { coffee: foundCoffee });
+      Roaster.find()
+      .then((roasterList) => {
+        res.render('coffees/edit-coffee', { coffee: foundCoffee, roasterList});
+      })
     })
     .catch((err) =>
       console.log('Error while getting the coffee for the edit form: ', err)
