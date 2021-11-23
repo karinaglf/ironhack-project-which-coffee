@@ -14,7 +14,15 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
   User.findById(user._id)
     .populate('favoriteCoffees')
     .then((foundedUser) => {
-      res.render('user-profile', {user: foundedUser });
+
+      let isRoaster = false;
+      if (foundedUser.profileType === "roaster" ) {
+        isRoaster = true;
+      }
+
+      console.log({user: foundedUser, isRoaster })
+      res.render('user-profile', {user: foundedUser, isRoaster });
+
     });
 });
 
