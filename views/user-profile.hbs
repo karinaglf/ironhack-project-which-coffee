@@ -1,7 +1,13 @@
-<h2>Welcome {{user.username}}</h2>
+<h2>Welcome {{user.username}}!</h2>
+
+{{#if user.profileType}}
+
+<a href="/roasters/create-roaster">Create a Roaster Profile</a>
 
 {{#each user.favoriteCoffees}}
-<p>Hello</p>
-<p>{{this.name}}</p>
+
+​    <a href="/coffees/detail/{{this._id}}" >{{this.name}}</a>
 
 {{/each}}
+
+{{/if}}
