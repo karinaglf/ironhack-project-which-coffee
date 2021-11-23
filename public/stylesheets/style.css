@@ -4,7 +4,7 @@
 }
 
 :root {
-  --bege: #eadac5;
+  --beige: #eadac5;
   --pink: #d47985;
   --green: #335b52;
   --magenta: #AF3146;
@@ -14,11 +14,15 @@
 body {
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
+nav {
+  background: var(--beige);
+
+}
 main {
   padding: 50px;
 }
 a {
-  color: #00b7ff;
+  color: ;
 }
 
 h1 {
