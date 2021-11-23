@@ -38,7 +38,8 @@ router.get('/coffees/detail/:coffeeId', (req, res) => {
   console.log('req.params', req.params);
   const coffeeId = req.params.coffeeId;
 
-  Coffee.findById(coffeeId) //
+  Coffee.findById(coffeeId)
+    .populate('roaster')
     .then((oneCoffee) => {
       res.render('coffees/coffee-details', { oneCoffee });
     });

@@ -48,9 +48,10 @@ nav {
   width: 150px;
 }
 main {
-  padding: 50px;
   background-color: var(--beige);
 }
+/* SEARCH FORMS */
+
 /* RESULTS PAGE */
 .listing-card {
   background-color: white;
@@ -65,5 +66,5 @@ main {
   margin-bottom: 10px;
 }
 .card-info {
-  padding: 20px
+  padding: 20px;
 }
