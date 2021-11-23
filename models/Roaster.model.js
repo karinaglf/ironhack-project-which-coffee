@@ -7,6 +7,7 @@ const roasterSchema = new Schema({
     country: { type: String, required: true },
   },
   logo: { type: String, default: '/images/img-logo-placeholder.jpeg' },
+  description: { type: String, required: true },
   website: { type: String, required: true },
   coffees: [{ type: Schema.Types.ObjectId, ref: 'Coffee' }],
 });

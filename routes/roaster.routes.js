@@ -52,7 +52,7 @@ router.post(
   '/roasters/create-roaster',
   fileUploader.single('logo'),
   (req, res) => {
-    const { name, country, city, website, coffees } = req.body;
+    const { name, country, city, description, website, coffees } = req.body;
     console.log(req.body);
 
     //Check if there is any form input file to upload otherwise model default
@@ -66,6 +66,7 @@ router.post(
       'location.country': country,
       'location.city': city,
       logo,
+      description,
       website,
       coffees,
     })
@@ -93,7 +94,15 @@ router.post(
   fileUploader.single('logo'),
   (req, res) => {
     const roasterId = req.params.roasterId;
-    const { name, country, city, website, coffees, existingImage } = req.body;
+    const {
+      name,
+      country,
+      city,
+      description,
+      website,
+      coffees,
+      existingImage,
+    } = req.body;
 
     //Check if there was an update on the logo file
     if (req.file) {
@@ -104,7 +113,7 @@ router.post(
 
     Roaster.findByIdAndUpdate(
       roasterId,
-      { name, country, city, website, coffees, logo },
+      { name, country, city, description, website, coffees, logo },
       { new: true }
     )
       .then((updatedRoaster) => {
