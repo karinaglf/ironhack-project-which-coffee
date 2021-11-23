@@ -3,13 +3,11 @@ const Coffee = require('../models/Coffee.model');
 const fileUploader = require('../config/cloudinary.config');
 const User = require('./../models/User.model');
 const isRoaster = require('./../middleware/isRoaster');
-const Roaster = require('../models/Roaster.model');
 
 // GET - Show all coffees list
 
 router.get('/coffees', (req, res) => {
   Coffee.find()
-    .populate('roaster')
     .then((coffeesList) => {
       res.render('coffees/all-coffees', { coffeesList });
     })
@@ -40,8 +38,7 @@ router.get('/coffees/detail/:coffeeId', (req, res) => {
   console.log('req.params', req.params);
   const coffeeId = req.params.coffeeId;
 
-  Coffee.findById(coffeeId)
-    .populate('roaster')
+  Coffee.findById(coffeeId) //
     .then((oneCoffee) => {
       res.render('coffees/coffee-details', { oneCoffee });
     });
@@ -49,9 +46,7 @@ router.get('/coffees/detail/:coffeeId', (req, res) => {
 
 //GET /coffees/create-coffee
 router.get('/coffees/create-coffee', isRoaster, (req, res) => {
-  Roaster.find().then((roasterList) => {
-    res.render('coffees/create-coffee', { roasterList });
-  });
+  res.render('coffees/create-coffee');
 });
 
 //POST - /coffees/create-coffee - Send and save data from form to database
