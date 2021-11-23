@@ -18,6 +18,7 @@ body{
 }
 main {
   max-width: 1320px;
+  padding: 50px;
   margin: 0 auto;
 }
 p, li {
@@ -55,12 +56,28 @@ nav {
   width: 150px;
 }
 /* SEARCH FORMS */
-
+.search-listing-form {
+  border-radius: 15px;
+  background-color: #335b523a;
+  padding: 30px;
+  margin-bottom: 50px;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+}
+.search-listing-form label {
+  font-weight: bold;
+}
+.search-listing-form input {
+  margin-bottom: 10px;
+}
+.search-listing-form .btn {
+  width: 100%;
+}
 /* RESULTS PAGE */
 .listing-card {
   background-color: white;
   border-radius: 20px;
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+  padding: 20px;
 }
 .card-img {
   height: 200px;
@@ -70,5 +87,5 @@ nav {
   margin-bottom: 10px;
 }
 .card-info {
-  padding: 20px;
+  min-height: 80px;
 }
