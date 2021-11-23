@@ -8,16 +8,18 @@ const Roaster = require('../models/Roaster.model');
 // GET - Show all coffees list
 
 router.get('/coffees', (req, res) => {
+  const user = req.session.user;
   Coffee.find()
     .populate('roaster')
     .then((coffeesList) => {
-      res.render('coffees/coffees-listing', { coffeesList });
+      res.render('coffees/coffees-listing', { coffeesList, user});
     })
     .catch((err) => console.log('Error while displaying all coffees: ', err));
 });
 
 // GET /coffee-search?name="str"&originCountry="str"
 router.get('/coffee-search', (req, res) => {
+  const user = req.session.user;
   console.log('req.query', req.query); //URL query values
   const coffeeName = req.query.name; //Grab the value from the query
   const originCountry = req.query.originCountry; //Grab the value from the query
@@ -30,27 +32,29 @@ router.get('/coffee-search', (req, res) => {
     .then((foundCoffees) => {
       //render the page and display the found coffees
       res.render('coffees/coffees-listing', {
-        coffeesList: foundCoffees,
+        coffeesList: foundCoffees, user
       });
     });
 });
 
 // GET   /coffees/detail/:coffeeId
 router.get('/coffees/detail/:coffeeId', (req, res) => {
+  const user = req.session.user;
   console.log('req.params', req.params);
   const coffeeId = req.params.coffeeId;
 
   Coffee.findById(coffeeId)
     .populate('roaster')
     .then((oneCoffee) => {
-      res.render('coffees/coffee-details', { oneCoffee });
+      res.render('coffees/coffee-details', { oneCoffee , user });
     });
 });
 
 //GET /coffees/create-coffee
 router.get('/coffees/create-coffee', isRoaster, (req, res) => {
+  const user = req.session.user;
   Roaster.find().then((roasterList) => {
-    res.render('coffees/create-coffee', { roasterList });
+    res.render('coffees/create-coffee', { roasterList , user});
   });
 });
 
@@ -95,12 +99,13 @@ router.post(
 
 //GET /coffees/edit-coffee/:coffeeId - Show the Edit Form
 router.get('/coffees/edit-coffee/:coffeeId', (req, res, next) => {
+  const user = req.session.user;
   Coffee.findById(req.params.coffeeId)
     .populate('roaster')
     .then((foundCoffee) => {
       Roaster.find()
       .then((roasterList) => {
-        res.render('coffees/edit-coffee', { coffee: foundCoffee, roasterList});
+        res.render('coffees/edit-coffee', { coffee: foundCoffee, roasterList, user});
       })
     })
     .catch((err) =>

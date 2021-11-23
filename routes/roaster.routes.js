@@ -5,15 +5,17 @@ const fileUploader = require('../config/cloudinary.config');
 // GET - Show all roasters list
 
 router.get('/roasters', (req, res) => {
+  const user = req.session.user;
   Roaster.find()
     .then((roastersList) => {
-      res.render('roasters/roasters-listing', { roastersList });
+      res.render('roasters/roasters-listing', { roastersList, user });
     })
     .catch((err) => console.log('Error while displaying all roasters: ', err));
 });
 
 // GET /coffee-search?name="str"&originCountry="str"
 router.get('/roaster-search', (req, res) => {
+  const user = req.session.user;
   console.log('req.query', req.query); //URL query values
   const roasterName = req.query.name; //Grab the value from the query
   const country = req.query.country; //Grab the value from the query
@@ -26,25 +28,27 @@ router.get('/roaster-search', (req, res) => {
     .then((foundRoaster) => {
       //render the page and display the found coffees
       res.render('roasters/roasters-listing', {
-        roastersList: foundRoaster,
+        roastersList: foundRoaster, user
       });
     });
 });
 
 // GET   /roasters/detail/:roasterId
 router.get('/roasters/detail/:roasterId', (req, res) => {
+  const user = req.session.user;
   console.log('req.params', req.params);
   const roasterId = req.params.roasterId;
 
   Roaster.findById(roasterId) //
     .then((oneRoaster) => {
-      res.render('roasters/roaster-details', { oneRoaster });
+      res.render('roasters/roaster-details', { oneRoaster , user});
     });
 });
 
 //GET /roasters/create-roaster
 router.get('/roasters/create-roaster', (req, res) => {
-  res.render('roasters/create-roaster');
+  const user = req.session.user;
+  res.render('roasters/create-roaster', { user });
 });
 
 //POST - /roasters/create-roaster - Send and save data from form to database
@@ -79,9 +83,10 @@ router.post(
 
 //GET /roasters/edit-roaster/:roasterId - Show the Edit Form
 router.get('/roasters/edit-roaster/:roasterId', (req, res, next) => {
+  const user = req.session.user;
   Roaster.findById(req.params.roasterId)
     .then((foundRoaster) => {
-      res.render('roasters/edit-roaster', { roaster: foundRoaster });
+      res.render('roasters/edit-roaster', { roaster: foundRoaster, user });
     })
     .catch((err) =>
       console.log('Error while getting the roaster for the edit form: ', err)
