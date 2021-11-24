@@ -21,7 +21,6 @@ require('./config')(app);
 // Register the location for handlebars partials here:
 hbs.registerPartials(__dirname + "/views/partials");
 
-
 // default value for title local
 const projectName = 'ironhack-project-which-coffee';
 const capitalized = (string) =>

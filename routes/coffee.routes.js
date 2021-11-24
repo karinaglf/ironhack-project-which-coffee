@@ -165,20 +165,37 @@ router.post(
 router.post('/coffees/detail/:coffeeId/add-favorite', (req, res) => {
   const theCoffee = req.params.coffeeId;
   const currentUser = req.session.user;
+  const currentFavorites = currentUser.favoriteCoffees;
 
-  User.findByIdAndUpdate(
-    currentUser._id,
-    { $push: { favoriteCoffees: theCoffee } },
-    { new: true }
-  )
-    .then((theUser) => {
-      console.log('this is the current favorite coffees list', theUser);
-      res.redirect('/profile');
-    })
-    .catch((err) =>
-      console.log('Error while adding a coffee to the favorites list: ', err)
-    );
-});
+  console.log(`currentFavorites`, currentFavorites);
+
+  if (currentFavorites.includes(theCoffee)) {
+    console.log(`--------------- ALREADY IN FAVORITE`, currentFavorites.includes(theCoffee))
+    User.findByIdAndUpdate(
+      currentUser._id,
+      { $pull: { favoriteCoffees: theCoffee } },
+      { new: true }
+    )
+      .then((theUser) => {
+        res.redirect('/profile');
+      })
+      .catch((err) =>
+        console.log('Error while adding a coffee to the favorites list: ', err)
+      );
+  } 
+    User.findByIdAndUpdate(
+      currentUser._id,
+      { $push: { favoriteCoffees: theCoffee } },
+      { new: true }
+    )
+      .then((theUser) => {
+        res.redirect('/profile');
+      })
+      .catch((err) =>
+        console.log('Error while adding a coffee to the favorites list: ', err)
+      );
+  }
+);
 
 // POST - Delete Coffees
 router.post('/coffees/detail/:coffeeId/delete', (req, res) => {
