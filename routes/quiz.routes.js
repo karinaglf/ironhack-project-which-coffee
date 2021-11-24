@@ -39,7 +39,7 @@ router.post('/quiz', (req, res) => {
     aabbb: ['Brazil', 'Costa Rica'],
   };
 
-  const originCountries = dictionary[combination]; // dictionary["aaaaaa"]   or dictioinary.aaaaaa
+  const originCountries = dictionary[combination]; 
 
   Coffee.find({ originCountry: { $in: originCountries } }) //
     .then((foundCoffees) => {

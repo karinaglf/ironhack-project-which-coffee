@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
 }
+
 :root {
   --beige: #d7cdc5;
   --pink: #d47985;
@@ -14,74 +15,109 @@
   --body-font-family: 'Lato', sans-serif;
   --heading-font-family: 'Nunito', sans-serif;
 }
+
+/* GENERAL */
+
 body{
   background-color: var(--beige);
 }
+
 main {
   max-width: 1320px;
   padding: 50px;
   margin: 0 auto;
 }
+
 p, li {
   font-family: var(--body-font-family);
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font-family);
 }
+
 a {
   color: var(--burgundy);
   text-decoration: none;
 }
+
 a:hover {
   color: var(--magenta);
 }
+
 .btn {
   margin-top: 20px;
   background-color: var(--burgundy);
   border: none;
 }
+
 .btn:hover {
   background-color: var(--magenta);
 }
+
 .btn-link {
  border: none;
  background-color: transparent;
  text-decoration: none;
  color: var(--burgundy);
 }
+
+/* NAV BAR */
+
 .nav {
   margin-bottom: 20px;
 }
+
 .navbar .navbar-nav .nav-link {
   color: var(--burgundy);
   font-style: italic;
   font-size: 1.1rem;
 }
+
 .navbar .navbar-nav .nav-link:hover{
   color: var(--magenta);
 }
+
 @media only screen and (min-width: 960px) {
 .navbar .navbar-nav .nav-item .nav-link {
   padding: 0 0.5rem;
 }
+
 .navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
   border-right: 1px solid var(--burgundy);
   padding: 0 15px;
 
 }
+
 .navbar .dropdown-menu {
   background-color: var(--beige);
 }
+
 .navbar .dropdown-item:hover {
   background-color: var(--beige);
   color: var(--burgundy);
 }
+
 .logo-nav {
   width: 150px;
 }
+
+/* FOOTER */
 footer {
   padding: 40px;
 }
+/* HOMEPAGE */
+.heading-box {
+  background-color: var(--green);
+  outline: 10px solid var(--green);
+  outline-offset: 6px;
+  padding: 10px;
+  border-radius: 3px;
+}
+.heading-box h1 {
+  color: var(--beige);
+  text-align: center;
+}
+
 /* SEARCH FORMS */
 .search-listing-form {
   border-radius: 15px;
@@ -90,19 +126,23 @@ footer {
   margin-bottom: 50px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
+
 .search-listing-form label {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 10px;
 }
+
 .search-listing-form input {
   margin-bottom: 10px;
 }
+
 .search-listing-form .btn {
   width: 100%;
   text-transform: uppercase;
   font-weight: bold;
 }
+
 /* RESULTS PAGE */
 .listing-card {
   background-color: white;
@@ -110,6 +150,7 @@ footer {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   padding: 20px;
 }
+
 .card-img {
   height: 180px;
   background-repeat: no-repeat;
@@ -117,9 +158,11 @@ footer {
   background-position: center;
   margin-bottom: 10px;
 }
+
 .card-info {
   min-height: 80px;
 }
+
 /* FAVORITES BUTTON */
 .favorite-btn {
   background-color: transparent;
