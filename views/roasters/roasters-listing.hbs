@@ -19,14 +19,7 @@
         <div class="row gy-5">
           {{#each roastersList}}
           <div class="col-sm col-lg-4">
-            <div class="listing-card">
-              <div class="card-img" style="background-image: url({{this.logo}})"></div>
-              <div class="card-info">
-                <h3>{{this.name}}</h3>
-                <p>{{this.location.city}}, {{this.location.country}}</p>
-                <a href="/roasters/detail/{{this._id}}">See Details</a>
-              </div>
-            </div>
+            {{> roastercard}}
           </div>
           {{/each}}
         </div>
