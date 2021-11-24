@@ -13,6 +13,7 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
   const user = req.session.user;
   User.findById(user._id)
     .populate('favoriteCoffees')
+    .populate('roaster')
     .then((foundedUser) => {
 
       let isRoaster = false;

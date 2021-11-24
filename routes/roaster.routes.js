@@ -14,22 +14,22 @@ router.get('/roasters', (req, res) => {
     .catch((err) => console.log('Error while displaying all roasters: ', err));
 });
 
-// GET /coffee-search?name="str"&originCountry="str"
+// GET /roaster-search?name="str"&originCountry="str"
 router.get('/roaster-search', (req, res) => {
   const user = req.session.user;
-  console.log('req.query', req.query); //URL query values
-  const roasterName = req.query.name; //Grab the value from the query
-  const country = req.query.country; //Grab the value from the query
+  const roasterName = req.query.name; 
+  const country = req.query.country; 
 
-  //call the DB and find all the coffees that match the name
+  //call the DB and find all the roasters that match the name
   Roaster.find({
     name: { $regex: roasterName, $options: 'i' },
     'location.country': { $regex: country, $options: 'i' },
   }) //makes it case sensitive and looks for any letter present in the title
     .then((foundRoaster) => {
-      //render the page and display the found coffees
+      //render the page and display the found roasters
       res.render('roasters/roasters-listing', {
-        roastersList: foundRoaster, user
+        roastersList: foundRoaster,
+        user,
       });
     });
 });
@@ -42,7 +42,7 @@ router.get('/roasters/detail/:roasterId', (req, res) => {
 
   Roaster.findById(roasterId) //
     .then((oneRoaster) => {
-      res.render('roasters/roaster-details', { oneRoaster , user});
+      res.render('roasters/roaster-details', { oneRoaster, user });
     });
 });
 
@@ -58,14 +58,13 @@ router.post(
   fileUploader.single('logo'),
   (req, res) => {
     const { name, country, city, description, website, coffees } = req.body;
-    console.log(req.body);
+    const user = req.session.user;
 
     //Check if there is any form input file to upload otherwise model default
     let logo;
     if (req.file) {
       logo = req.file.path;
     }
-
     Roaster.create({
       name,
       'location.country': country,
@@ -76,12 +75,17 @@ router.post(
       coffees,
     })
       .then((createdRoaster) => {
+        return User.findByIdAndUpdate(
+          user._id,
+          { $push: { roaster: createdRoaster._id } },
+          { new: true }
+        );
+        console.log(`NEW ROASTER ARRAY`, user)
         res.redirect(`/roasters/detail/${createdRoaster._id}`);
       })
       .catch((err) => console.log('Error while creating a roaster: ', err));
   }
 );
-
 //GET /roasters/edit-roaster/:roasterId - Show the Edit Form
 router.get('/roasters/edit-roaster/:roasterId', (req, res, next) => {
   const user = req.session.user;
@@ -134,20 +138,16 @@ router.post(
 
 // POST - Claim my Business
 router.post('/roasters/detail/:roasterId/claim-my-business', (req, res) => {
+  const userId = req.session.user._id;
   const theRoaster = req.params.roasterId;
-  const currentUser = req.session.user;
 
-  User.findByIdAndUpdate(
-    currentUser._id,
-    { $push: { roaster: theRoaster } },
-    { new: true }
-  )
-    .then((theUser) => {
-      console.log(`theUser`, theUser)
-      res.redirect('/profile');
+  User.findById(userId)
+    .then((currentUser) => {
+      const currentRoasters = currentUser.roaster;
+      console.log(`currentRoasters`, currentRoasters);
     })
     .catch((err) =>
-      console.log('Error while adding a coffee to the favorites list: ', err)
+      console.log('Error while relating roaster with user: ', err)
     );
 });
 
