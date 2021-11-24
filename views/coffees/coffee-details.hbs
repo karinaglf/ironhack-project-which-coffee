@@ -6,6 +6,13 @@
       <form action='/coffees/detail/{{oneCoffee._id}}/add-favorite' method='POST'>
         <button type='submit' class="favorite-btn"><span class="favorite-button-icon fa fa-heart-o"></span></button>
       </form>
+
+    {{!-- error message display: --}} 
+
+      {{#if errorMessage}}
+        <div class="error-message">{{ errorMessage }}</div>
+      {{/if}}
+
       <img src="{{oneCoffee.image}}" alt="coffee image" width="300px">
     </div>
     <div class="col-lg-8 col-sm">
