@@ -1,0 +1,16 @@
+<h2>QUIZ RESULT</h2>
+
+<h2>Hello {{user.username}}!</h2>
+
+<h3>Your origin coffee match is:{{originCountry}}</h3>
+
+<h3>Here is a selection of coffees from {{originCountry}}</h3>
+    <div class="container">
+        <div class="row gy-5">
+          {{#each coffee.originCountry}}
+          <div class="col-sm col-lg-3">
+            {{> coffeecard}}
+          </div>
+          {{/each}}
+        </div>
+    </div>

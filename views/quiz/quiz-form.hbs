@@ -1,1 +1,97 @@
-<h2>QUIZ</h2>
+<h2>Find out the origin coffee that better fits your taste.</h2>
+
+   <div id="qbox-container">
+      <form action="/quiz" class="needs-validation" id="form-wrapper" method="post" name="form-wrapper" novalidate="">
+         <div id="steps-container">
+
+            <div class="step">
+               <h4>Do you prefer which kind of fruit?</h4>
+               <div class="form-check ps-0 q-box">
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_1_a" name="q_1" type="radio" value="a"> 
+                     <label class="form-check-label question__label" for="q_1_a">Yellow fruits</label>
+                  </div>
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_1_b" name="q_1" type="radio" value="b"> 
+                     <label class="form-check-label question__label" for="q_1_b">Red berries</label>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="step">
+               <h4>And what kind of liquor?</h4>
+               <div class="form-check ps-0 q-box">
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_2_a" name="q_2" type="radio" value="a"> 
+                     <label class="form-check-label question__label" for="q_2_a">Limoncello</label>
+                  </div>
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_2_b" name="q_2" type="radio" value="b"> 
+                     <label class="form-check-label question__label" for="q_2_b">Amarula</label>
+                  </div>
+               </div>
+            </div>
+
+            <div class="step">
+               <h4>And what about snacks?</h4>
+               <div class="form-check ps-0 q-box">
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_3_a" name="q_3" type="radio" value="a"> 
+                     <label class="form-check-label question__label" for="q_3_a">A bowl of fruits</label>
+                  </div>
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_3_b" name="q_3" type="radio" value="b"> 
+                     <label class="form-check-label question__label" for="q_3_b">Some nuts</label>
+                  </div>
+               </div>
+            </div>
+
+
+            <div class="step">
+               <h4>Which kind of smell gets you to a good mood?</h4>
+               <div class="form-check ps-0 q-box">
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_4_a" name="q_4" type="radio" value="a"> 
+                     <label class="form-check-label question__label" for="q_4_a">Walking in a citrus farm</label>
+                  </div>
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_4_b" name="q_4" type="radio" value="b"> 
+                     <label class="form-check-label question__label" for="q_4_b">Fresh baked chocolate cake</label>
+                  </div>
+               </div>
+            </div>
+
+            <div class="step">
+               <h4>And how do you take your coffee?</h4>
+               <div class="form-check ps-0 q-box">
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_5_a" name="q_5" type="radio" value="a"> 
+                     <label class="form-check-label question__label" for="q_5_a">Black coffee and that's it.</label>
+                  </div>
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_5_b" name="q_5" type="radio" value="b"> 
+                     <label class="form-check-label question__label" for="q_5_b">With some milk or sugar.</label>
+                  </div>
+               </div>
+            </div>
+
+            <div class="step">
+               <h4>And the last one. How you're brewing?</h4>
+               <div class="form-check ps-0 q-box">
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_6_a" name="q_6" type="radio" value="a"> 
+                     <label class="form-check-label question__label" for="q_6_a">Filter coffee rules!</label>
+                  </div>
+                  <div class="q-box__question">
+                     <input class="form-check-input question__input" id="q_6_b" name="q_6" type="radio" value="b"> 
+                     <label class="form-check-label question__label" for="q_6_b">I'm a spresso fellow</label>
+                  </div>
+               </div>
+            </div>
+
+         <div id="q-box__buttons">
+            <button id="submit-btn" type="submit">Submit</button>
+         </div>
+         </div>
+      </form>
+   </div>
