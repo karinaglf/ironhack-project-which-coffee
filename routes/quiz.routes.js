@@ -15,18 +15,38 @@ router.post('/quiz', (req, res) => {
   const dictionary = {
     aaaaa: ['Ethiopia', 'Kenya', 'Rwanda'],
     abaaa: ['Ethiopia'],
-    aabaa: ['Kenya', 'rwanda'],
+    aabaa: ['Kenya', 'Rwanda'],
+    aaaba: ['Ethiopia', 'Kenya', 'Rwanda'],
+    aaaab: ['Ethiopia', 'Kenya', 'Rwanda'],
+    abbaa: ['Kenya', 'Rwanda'],
+    aabba: ['Kenya', 'Rwanda'],
+    aaabb: ['Kenya', 'Rwanda'],
+    baaaa: ['Ethiopia', 'Kenya'],
+    babaa: ['Kenya', 'Rwanda'],
+    ababa: ['Kenya', 'Rwanda'],
+    bbaaa: ['Ethiopia'],
+    bbbbb: ['Colombia', 'Brazil', 'Costa Rica'],
+    babbb: ['Brazil', 'Costa Rica'],
+    bbabb: ['Colombia', 'Panama'],
+    bbbab: ['Colombia', 'Panama'],
+    bbbba: ['Brazil', 'Costa Rica', 'Panama'],
+    baabb: ['Brazil', 'Costa Rica'],
+    bbaab: ['Brazil', 'Costa Rica', 'Panama'],
+    bbbaa: ['Brazil', 'Costa Rica', 'Panama'],
+    abbbb: ['Brazil', 'Costa Rica'],
+    ababb: ['Brazil', 'Panama'],
+    babab: ['Brazil', 'Costa Rica', 'Panama'],
+    aabbb: ['Brazil', 'Costa Rica'],
   };
+
   const originCountries = dictionary[combination]; // dictionary["aaaaaa"]   or dictioinary.aaaaaa
 
   Coffee.find({ originCountry: { $in: originCountries } }) //
-  .then(
-    (foundCoffees) => {
+    .then((foundCoffees) => {
       res.render('coffees/coffees-listing', {
         coffeesList: foundCoffees,
       });
-    }
-  );
+    });
 });
 
 module.exports = router;
