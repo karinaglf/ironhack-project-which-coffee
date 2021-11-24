@@ -15,11 +15,6 @@ router.get('/signup', (req, res) => {
   res.render('auth/signup-form');
 });
 
-//GET  /signup -
-router.get('/signup', (req, res) => {
-  res.render('auth/signup-form');
-});
-
 //POST /signup -
 
 router.post('/signup', (req, res) => {

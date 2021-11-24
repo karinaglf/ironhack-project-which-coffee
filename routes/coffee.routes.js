@@ -12,7 +12,7 @@ router.get('/coffees', (req, res) => {
   Coffee.find()
     .populate('roaster')
     .then((coffeesList) => {
-      res.render('coffees/coffees-listing', { coffeesList, user});
+      res.render('coffees/coffees-listing', { coffeesList, user });
     })
     .catch((err) => console.log('Error while displaying all coffees: ', err));
 });
@@ -32,7 +32,8 @@ router.get('/coffee-search', (req, res) => {
     .then((foundCoffees) => {
       //render the page and display the found coffees
       res.render('coffees/coffees-listing', {
-        coffeesList: foundCoffees, user
+        coffeesList: foundCoffees,
+        user,
       });
     });
 });
@@ -46,7 +47,7 @@ router.get('/coffees/detail/:coffeeId', (req, res) => {
   Coffee.findById(coffeeId)
     .populate('roaster')
     .then((oneCoffee) => {
-      res.render('coffees/coffee-details', { oneCoffee , user });
+      res.render('coffees/coffee-details', { oneCoffee, user });
     });
 });
 
@@ -54,7 +55,7 @@ router.get('/coffees/detail/:coffeeId', (req, res) => {
 router.get('/coffees/create-coffee', isRoaster, (req, res) => {
   const user = req.session.user;
   Roaster.find().then((roasterList) => {
-    res.render('coffees/create-coffee', { roasterList , user});
+    res.render('coffees/create-coffee', { roasterList, user });
   });
 });
 
@@ -103,10 +104,13 @@ router.get('/coffees/edit-coffee/:coffeeId', (req, res, next) => {
   Coffee.findById(req.params.coffeeId)
     .populate('roaster')
     .then((foundCoffee) => {
-      Roaster.find()
-      .then((roasterList) => {
-        res.render('coffees/edit-coffee', { coffee: foundCoffee, roasterList, user});
-      })
+      Roaster.find().then((roasterList) => {
+        res.render('coffees/edit-coffee', {
+          coffee: foundCoffee,
+          roasterList,
+          user,
+        });
+      });
     })
     .catch((err) =>
       console.log('Error while getting the coffee for the edit form: ', err)
@@ -163,39 +167,51 @@ router.post(
 
 // POST - Add Coffee as Favorite
 router.post('/coffees/detail/:coffeeId/add-favorite', (req, res) => {
+  const userId = req.session.user._id;
   const theCoffee = req.params.coffeeId;
-  const currentUser = req.session.user;
-  const currentFavorites = currentUser.favoriteCoffees;
 
-  console.log(`currentFavorites`, currentFavorites);
+  User.findById(userId)
+    .then((currentUser) => {
+      const currentFavorites = currentUser.favoriteCoffees;
 
-  if (currentFavorites.includes(theCoffee)) {
-    console.log(`--------------- ALREADY IN FAVORITE`, currentFavorites.includes(theCoffee))
-    User.findByIdAndUpdate(
-      currentUser._id,
-      { $pull: { favoriteCoffees: theCoffee } },
-      { new: true }
-    )
-      .then((theUser) => {
-        res.redirect('/profile');
-      })
-      .catch((err) =>
-        console.log('Error while adding a coffee to the favorites list: ', err)
-      );
-  } 
-    User.findByIdAndUpdate(
-      currentUser._id,
-      { $push: { favoriteCoffees: theCoffee } },
-      { new: true }
-    )
-      .then((theUser) => {
-        res.redirect('/profile');
-      })
-      .catch((err) =>
-        console.log('Error while adding a coffee to the favorites list: ', err)
-      );
-  }
-);
+      if (currentFavorites.includes(theCoffee)) {
+        return User.findByIdAndUpdate(
+          currentUser._id,
+          { $pull: { favoriteCoffees: theCoffee } },
+          { new: true }
+        )
+          .then((updatedUser) => {
+            console.log('THE FAVORITES WAS REMOVED');
+            res.redirect('/profile');
+          })
+          .catch((err) =>
+            console.log(
+              'Error while removing a coffee from the favorites list: ',
+              err
+            )
+          );
+      } else {
+        return User.findByIdAndUpdate(
+          currentUser._id,
+          { $push: { favoriteCoffees: theCoffee } },
+          { new: true }
+        )
+          .then((updatedUser) => {
+            console.log('THE FAVORITES WAS ADDED');
+            res.redirect('/profile');
+          })
+          .catch((err) =>
+            console.log(
+              'Error while adding a coffee to the favorites list: ',
+              err
+            )
+          );
+      }
+    })
+    .catch((err) =>
+      console.log('Error while editing the favorite coffees list: ', err)
+    );
+});
 
 // POST - Delete Coffees
 router.post('/coffees/detail/:coffeeId/delete', (req, res) => {
