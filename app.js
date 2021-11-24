@@ -42,6 +42,9 @@ app.use('/', coffeeRoutes);
 const roasterRoutes = require('./routes/roaster.routes');
 app.use('/', roasterRoutes);
 
+const quizRoutes = require('./routes/quiz.routes')
+app.use('/', quizRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
 
