@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Roaster = require('../models/Roaster.model');
+const User = require('../models/User.model');
 const fileUploader = require('../config/cloudinary.config');
 
 // GET - Show all roasters list
@@ -130,6 +131,25 @@ router.post(
       );
   }
 );
+
+// POST - Claim my Business
+router.post('/roasters/detail/:roasterId/claim-my-business', (req, res) => {
+  const theRoaster = req.params.roasterId;
+  const currentUser = req.session.user;
+
+  User.findByIdAndUpdate(
+    currentUser._id,
+    { $push: { roaster: theRoaster } },
+    { new: true }
+  )
+    .then((theUser) => {
+      console.log(`theUser`, theUser)
+      res.redirect('/profile');
+    })
+    .catch((err) =>
+      console.log('Error while adding a coffee to the favorites list: ', err)
+    );
+});
 
 // POST - Delete Roasters
 router.post('/roasters/detail/:roasterId/delete', (req, res) => {

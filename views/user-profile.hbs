@@ -1,14 +1,19 @@
 <h2>Welcome {{user.username}}!</h2>
 
-{{#each user.favoriteCoffees}}
 <h3>Favorite Coffees</h3>
-
-​    <a href="/coffees/detail/{{this._id}}" >{{this.name}}</a>
-
-{{/each}}
+    <div class="container">
+        <div class="row gy-5">
+          {{#each user.favoriteCoffees}}
+          <div class="col-sm col-lg-3">
+            {{> coffeecard}}
+          </div>
+          {{/each}}
+        </div>
+    </div>
 
 {{#if isRoaster}}
 
+<a href="/roasters/detail/{{user.roaster}}">My Company Profile</a>
 <a href="/roasters/create-roaster">Create a Roaster Profile</a>
 <a href="/coffees/create-coffee">Create a Coffee</a>
 

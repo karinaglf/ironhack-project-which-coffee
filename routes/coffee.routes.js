@@ -164,10 +164,10 @@ router.post(
 // POST - Add Coffee as Favorite
 router.post('/coffees/detail/:coffeeId/add-favorite', (req, res) => {
   const theCoffee = req.params.coffeeId;
-  const currentUser = req.session.user._id;
+  const currentUser = req.session.user;
 
   User.findByIdAndUpdate(
-    currentUser,
+    currentUser._id,
     { $push: { favoriteCoffees: theCoffee } },
     { new: true }
   )
