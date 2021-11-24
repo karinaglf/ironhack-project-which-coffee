@@ -1,4 +1,4 @@
-<h2>Welcome {{user.username}}!</h2>
+<h2>Hello {{user.username}}!</h2>
 
 <h3>Favorite Coffees</h3>
     <div class="container">
@@ -12,10 +12,18 @@
     </div>
 
 {{#if isRoaster}}
-<br>
-<br>
-<br>
-<a href="/roasters/detail/{{user.roaster}}">My Company Profile</a><br>
+<h3>My Company</h3>
+<h3>Favorite Coffees</h3>
+    <div class="container">
+        <div class="row gy-5">
+          {{#each user.roaster}}
+          <div class="col-sm col-lg-3">
+            {{this.name}}
+          </div>
+          {{/each}}
+        </div>
+    </div>
+</hr>
 <a href="/roasters/create-roaster">Create a Roaster Profile</a><br>
 <a href="/coffees/create-coffee">Create a Coffee</a><br>
 
