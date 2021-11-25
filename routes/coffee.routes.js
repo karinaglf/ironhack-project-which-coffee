@@ -136,6 +136,8 @@ router.post(
       existingImage,
     } = req.body;
 
+    console.log(req.body)
+
     //Check if there was an update on the image file
     if (req.file) {
       image = req.file.path;
@@ -152,12 +154,14 @@ router.post(
         variety,
         roastType,
         flavor,
-        roaster,
-        image,
+        image
       },
       { new: true }
     )
       .then((updatedCoffee) => {
+        
+      console.log(`UPDATED COFFEE`, updatedCoffee);
+        
         // if everything is fine, take me back to the details page so we can see the changes we made
         res.redirect(`/coffees/detail/${coffeeId}`);
       })

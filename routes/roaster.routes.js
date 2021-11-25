@@ -65,6 +65,7 @@ router.post(
     if (req.file) {
       logo = req.file.path;
     }
+    let id;
     Roaster.create({
       name,
       'location.country': country,
@@ -75,13 +76,15 @@ router.post(
       coffees,
     })
       .then((createdRoaster) => {
-        res.redirect(`/roasters/detail/${createdRoaster._id}`);
+        id = createdRoaster._id;
         return User.findByIdAndUpdate(
           user._id,
-          { $push: { roaster: createdRoaster._id } },
+          { roaster: createdRoaster._id } ,
           { new: true }
-        )
-      .then
+          )
+        })
+      .then(() => {
+        res.redirect(`/roasters/detail/${id}`);
       })
       .catch((err) => console.log('Error while creating a roaster: ', err));
   }
