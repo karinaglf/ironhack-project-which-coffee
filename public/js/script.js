@@ -6,12 +6,6 @@ document.addEventListener(
   false
 );
 
-// OWL CAROUSEL
-$(document).ready(function(){
-  $(".owl-carousel").owlCarousel();
-});
-
-
 // QUIZ 
 
 let step = document.getElementsByClassName('step');
@@ -27,7 +21,7 @@ let succcessDiv = document.getElementById('success');
 //   return false
 // }
 let current_step = 0;
-let stepCount = 5
+let stepCount = 5;
 step[current_step].classList.add('d-block');
 if (current_step == 0) {
   prevBtn.classList.add('d-none');
