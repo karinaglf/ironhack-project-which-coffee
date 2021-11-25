@@ -3,8 +3,68 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 80px 0;
+    padding: 50px 0;
+}
+h2 {
+    text-align: center;
 }
 form {
     width: 60vw;
+    border-radius: 15px;
+    background-color: #335b523a;
+    padding: 35px;
+    margin-bottom: 50px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+label {
+    font-weight: bold;
+}
+.auth-form {
+    width: 40vw;
+}
+.sign-up-cta {
+    text-align: center;
+    font-size: 1rem;
+    font-style: italic;
+}
+#emailHelp {
+    color: black;
+}
+.form-check {
+    margin-right: 20px;
+}
+.form-check-label {
+    font-weight: 400;
+}
+.form-check-input:checked,
+.form-check-input:focus {
+  background-color: var(--magenta) !important;
+}
+
+.form-check-input:checked[type='radio'],
+.form-check-input:checked[type='radio']:hover,
+.form-check-input:checked[type='radio']:focus,
+.form-check-input:checked[type='radio']:active {
+  border: none !important;
+  -webkit-outline: 0px !important;
+  box-shadow: none !important;
+}
+.form-check-input:focus,
+input[type='radio']:hover {
+  box-shadow: none;
+  cursor: pointer !important;
+}
+
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus {
+  border: 2px solid var(--green);
+  border-radius: 5px;
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }

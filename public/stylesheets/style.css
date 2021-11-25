@@ -48,7 +48,11 @@ a:hover {
   margin-top: 20px;
   background-color: var(--magenta);
   border: none;
+  text-transform: uppercase;
+  font-weight: bold;
   color: white;
+  padding: 8px 20px;
+
 }
 .btn:hover {
   background-color: var(--burgundy);
@@ -63,8 +67,6 @@ a:hover {
 }
 
 /* NAV BAR */
-
-
 .nav {
   margin-bottom: 20px;
 }
@@ -88,7 +90,7 @@ a:hover {
   padding: 0 15px;
 
 }
-
+}
 .navbar .dropdown-menu {
   background-color: var(--beige);
 }
