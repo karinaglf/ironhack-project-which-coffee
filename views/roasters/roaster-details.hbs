@@ -14,7 +14,7 @@
           <p><strong>Country: </strong>{{oneRoaster.location.country}}</p>
           <p><strong>City: </strong> {{oneRoaster.location.city}}</p>
           <p><strong>Description: </strong> {{oneRoaster.description}}</p>
-          <strong><a href="{{oneRoaster.website}}">Website</a></strong>
+          <strong><em><a href="{{oneRoaster.website}}">Website</a></em></strong>
       </div>
     </div>
       <div class="container coffees-list-section">
@@ -33,9 +33,6 @@
   <a href='/roasters/edit-roaster/{{oneRoaster._id}}'>Edit Roaster</a><br>
   <form action='/roasters/detail/{{oneRoaster._id}}/delete' method='POST'>
     <button type='submit' class="btn-link">Delete</button>
-  </form>
-  <form action='/roasters/detail/{{oneRoaster._id}}/claim-my-business' method='POST'>
-    <button type='submit' class="btn-link">Claim My Business</button>
   </form>
   <a href='javascript:history.back()'>Back</a>
 </div>

@@ -5,6 +5,9 @@ h1 {
     font-weight: bold;
     color: var(--burgundy);
 }
+h2 {
+    margin-bottom: 50px;
+}
 /* ROASTER */
 .coffees-list-section {
     margin-top: 80px;
