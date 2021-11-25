@@ -75,7 +75,7 @@ router.post(
       coffees,
     })
       .then((createdRoaster) => {
-        //res.redirect(`/roasters/detail/${createdRoaster._id}`);
+        res.redirect(`/roasters/detail/${createdRoaster._id}`);
         return User.findByIdAndUpdate(
           user._id,
           { $push: { roaster: createdRoaster._id } },

@@ -1,0 +1,10 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0;
+}
+form {
+    width: 60vw;
+}

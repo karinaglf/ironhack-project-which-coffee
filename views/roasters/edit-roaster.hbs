@@ -1,3 +1,9 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/forms.css" />
+</head>
+
+
 <h2>Edit roaster</h2>
 
 <form id="form" action="/roasters/edit-roaster/{{roaster._id}}" method="POST" enctype="multipart/form-data">
@@ -25,7 +31,6 @@
   <div class="custom-file">
     <input name="logo" type="file" class="custom-file-input" id="imageFile">
     <input type="text" name="existingImage" hidden value="{{roaster.logo}}">
-    <label class="custom-file-label" for="imageFile">Choose file</label>
   </div>
   
   <button type="submit" class="btn btn-primary">Update roaster</button>
