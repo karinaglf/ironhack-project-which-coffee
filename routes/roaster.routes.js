@@ -139,21 +139,6 @@ router.post(
   }
 );
 
-// POST - Claim my Business
-router.post('/roasters/detail/:roasterId/claim-my-business', (req, res) => {
-  const userId = req.session.user._id;
-  const theRoaster = req.params.roasterId;
-
-  User.findById(userId)
-    .then((currentUser) => {
-      const currentRoasters = currentUser.roaster;
-      console.log(`currentRoasters`, currentRoasters);
-    })
-    .catch((err) =>
-      console.log('Error while relating roaster with user: ', err)
-    );
-});
-
 // POST - Delete Roasters
 router.post('/roasters/detail/:roasterId/delete', (req, res) => {
   Roaster.findByIdAndRemove(req.params.roasterId)
