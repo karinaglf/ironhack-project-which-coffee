@@ -7,6 +7,7 @@
 
 <h2>Hello {{user.username}}!</h2>
 
+<div class="favorites-row">
 <h3>Favorite Coffees</h3>
     <div class="container">
         <div class="row gy-5">
@@ -17,10 +18,12 @@
           {{/each}}
         </div>
     </div>
+</div>
 
+<div class="roaster-row">
 {{#if isRoaster}}
+<div class="my-company">
 <h3>My Company</h3>
-<h3>Favorite Coffees</h3>
     <div class="container">
         <div class="row gy-5">
           {{#each user.roaster}}
@@ -30,15 +33,13 @@
           {{/each}}
         </div>
     </div>
-</hr>
-<a href="/roasters/create-roaster">Create a Roaster Profile</a><br>
-<a href="/coffees/create-coffee">Create a Coffee</a><br>
-
-{{/if}}
-
 </div>
-
-
+<div class="manage-profile-row">
+  <a href="/roasters/create-roaster">Create a Roaster Profile</a><br>
+  <a href="/coffees/create-coffee">Create a Coffee</a><br>
+</div>
+{{/if}}
+</div>
 
 
 

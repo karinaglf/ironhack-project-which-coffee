@@ -6,3 +6,18 @@
     min-height: 850px;
     padding: 60px 60px 60px 200px; 
 }
+.favorites-row {
+    min-height: 150px;
+    border: 1px solid black;
+}
+.roaster-row {
+    min-height: 150px;
+    border: 1px solid black;
+}
+.manage-profile-row {
+    min-height: 150px;
+}
+.my-company {
+    min-height: 150px;
+    border: 1px solid black;
+}
