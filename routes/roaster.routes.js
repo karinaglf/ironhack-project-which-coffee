@@ -17,8 +17,8 @@ router.get('/roasters', (req, res) => {
 // GET /roaster-search?name="str"&originCountry="str"
 router.get('/roaster-search', (req, res) => {
   const user = req.session.user;
-  const roasterName = req.query.name; 
-  const country = req.query.country; 
+  const roasterName = req.query.name;
+  const country = req.query.country;
 
   //call the DB and find all the roasters that match the name
   Roaster.find({
@@ -75,12 +75,13 @@ router.post(
       coffees,
     })
       .then((createdRoaster) => {
+        res.redirect(`/roasters/detail/${createdRoaster._id}`);
         return User.findByIdAndUpdate(
           user._id,
           { $push: { roaster: createdRoaster._id } },
           { new: true }
         );
-        console.log(`NEW ROASTER ARRAY`, user)
+        console.log(`NEW ROASTER ARRAY`, user);
         res.redirect(`/roasters/detail/${createdRoaster._id}`);
       })
       .catch((err) => console.log('Error while creating a roaster: ', err));
