@@ -1,4 +1,4 @@
-main{
+main {
     padding: 80px 80px;
 }
 h1 {
@@ -7,6 +7,14 @@ h1 {
 }
 h2 {
     margin-bottom: 50px;
+}
+.btn-row {
+    display: flex;
+    margin-top: 50px;
+}
+.btn {
+    width: 150px;
+    margin-right: 10px;
 }
 /* ROASTER */
 .coffees-list-section {

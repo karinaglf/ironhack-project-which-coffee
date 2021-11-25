@@ -1,7 +1,13 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/details-view.css" />
+</head>
+
 <div>
 <div class="container">
   <div class="row">
     <div class="col-lg-4 col-sm">
+           <h1>{{oneCoffee.name}}</h1>
       <form action='/coffees/detail/{{oneCoffee._id}}/add-favorite' method='POST'>
         <button type='submit' class="favorite-btn"><span class="favorite-button-icon fa fa-heart-o"></span></button>
       </form>
@@ -15,7 +21,6 @@
       <img src="{{oneCoffee.image}}" alt="coffee image" width="300px">
     </div>
     <div class="col-lg-8 col-sm">
-        <h3>{{oneCoffee.name}}</h3>
         <p><strong>Process: </strong>{{oneCoffee.process}}</p>
         <p><strong>Origin Country: </strong> {{oneCoffee.originCountry}}</p>
         <p><strong>Variety: </strong>{{oneCoffee.variety}}</p>
@@ -25,9 +30,10 @@
     </div>
   </div>
 </div>
-  <a href='/coffees/edit-coffee/{{oneCoffee._id}}'>Edit Coffee</a><br>
+<div class="btn-row">
+  <a href='/coffees/edit-coffee/{{oneCoffee._id}}' class="btn">Edit Coffee</a><br>
   <form action='/coffees/detail/{{oneCoffee._id}}/delete' method='POST'>
-    <button type='submit' class="btn-link">Delete</button>
+    <button type='submit' class="btn">Delete</button>
   </form>
-  <a href='javascript:history.back()'>Back</a>
+  <a href='javascript:history.back()' class="btn">Back</a>
 </div>

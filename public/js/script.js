@@ -6,6 +6,8 @@ document.addEventListener(
   false
 );
 
+
+
 // QUIZ 
 
 let step = document.getElementsByClassName('step');

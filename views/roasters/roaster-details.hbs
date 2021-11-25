@@ -28,11 +28,10 @@
         </div>
     </div>
 </div>
-</div>
-</div>
-  <a href='/roasters/edit-roaster/{{oneRoaster._id}}'>Edit Roaster</a><br>
+<div class="btn-row">
+  <a href='/roasters/edit-roaster/{{oneRoaster._id}}' class="btn">Edit Roaster</a><br>
   <form action='/roasters/detail/{{oneRoaster._id}}/delete' method='POST'>
-    <button type='submit' class="btn-link">Delete</button>
+    <button type='submit' class="btn">Delete Roaster</button>
   </form>
-  <a href='javascript:history.back()'>Back</a>
+  <a href='javascript:history.back()' class="btn">Back</a>
 </div>

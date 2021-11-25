@@ -24,7 +24,6 @@ body {
 
 main {
   margin: 0 auto;
-  padding: 80px 0;
 }
 
 p, li {
@@ -65,10 +64,10 @@ a:hover {
 
 /* NAV BAR */
 
+
 .nav {
   margin-bottom: 20px;
 }
-
 .navbar .navbar-nav .nav-link {
   color: var(--burgundy);
   font-style: italic;
@@ -122,38 +121,14 @@ footer a {
   color: var(--beige);
   text-decoration: underline;
 }
-/* SEARCH FORMS */
-.search-listing-form {
-  border-radius: 15px;
-  background-color: #335b523a;
-  padding: 52px 40px;
-  margin-bottom: 50px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-  position: fixed;
-}
 
-.search-listing-form label {
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.search-listing-form input {
-  margin-bottom: 10px;
-}
-
-.search-listing-form .btn {
-  width: 100%;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-/* RESULTS PAGE */
+/* CARD STYLES - PARTIALS */
 .listing-card {
   background-color: white;
   border-radius: 20px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   padding: 20px;
+  min-height: 380px;
 }
 
 .card-img {
@@ -166,6 +141,10 @@ footer a {
 
 .card-info {
   min-height: 80px;
+}
+
+.card-info p {
+  font-size: 1rem;
 }
 
 /* FAVORITES BUTTON */
