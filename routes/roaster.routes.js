@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Roaster = require('../models/Roaster.model');
 const User = require('../models/User.model');
+const Coffee = require('../models/Coffee.model');
 const fileUploader = require('../config/cloudinary.config');
 
 // GET - Show all roasters list
@@ -42,7 +43,11 @@ router.get('/roasters/detail/:roasterId', (req, res) => {
 
   Roaster.findById(roasterId) //
     .then((oneRoaster) => {
-      res.render('roasters/roaster-details', { oneRoaster, user });
+      console.log(oneRoaster)
+      return Coffee.find({ roaster: roasterId })
+      .then((coffeesList) => {
+        res.render('roasters/roaster-details', { oneRoaster, coffeesList, user });
+      })
     });
 });
 

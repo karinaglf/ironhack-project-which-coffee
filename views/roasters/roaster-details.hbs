@@ -1,3 +1,8 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/details-view.css" />
+</head>
+
 <h2>Roaster Details</h2>
 <div>
 <div class="container">
@@ -10,9 +15,22 @@
         <p><strong>Country: </strong>{{oneRoaster.location.country}}</p>
         <p><strong>City: </strong> {{oneRoaster.location.city}}</p>
         <p><strong>Description: </strong> {{oneRoaster.description}}</p>
-        <p><strong>Coffees: </strong>{{oneRoaster.coffees}}</p>
         <a href="{{oneRoaster.website}}">Website</a>
     </div>
+  </div>
+  <div>
+  <div class="coffees-row">
+      <h3>The Coffees</h3>
+        <div class="container">
+        <div class="row gy-5">
+          {{#each coffeesList}}
+          <div class="col-sm col-lg-3">
+            {{> coffeecard}}
+          </div>
+          {{/each}}
+        </div>
+    </div>
+</div>
   </div>
 </div>
   <a href='/roasters/edit-roaster/{{oneRoaster._id}}'>Edit Roaster</a><br>
