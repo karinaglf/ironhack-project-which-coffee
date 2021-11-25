@@ -38,7 +38,7 @@ label {
 }
 
 .quiz-container {
-    margin-top: -40px;
+  margin-top: -40px;
 }
 /* TITLE */
 
@@ -46,7 +46,7 @@ label {
   min-height: 460px;
   height: 100%;
   color: #fff;
-  background-color: var(--green);
+  background-color: var(--magenta);
   text-align: center;
   padding: 105px 28px 28px 28px;
   box-sizing: border-box;
@@ -125,7 +125,7 @@ button#submit-btn {
   position: relative;
   width: 130px;
   height: 50px;
-  background:var(--magenta);
+  background: var(--magenta);
   margin: 0 auto;
   margin-top: 40px;
   overflow: hidden;
@@ -175,9 +175,9 @@ button#submit-btn:hover::after {
   margin-bottom: 10px;
 }
 .question__input {
-    position: absolute;
-    left: -9999px;
-  }
+  position: absolute;
+  left: -9999px;
+}
 .question__label {
   position: relative;
   display: block;
@@ -328,32 +328,6 @@ input[type='radio']:hover {
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   z-index: 1001;
-}
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
 }
 
 #preloader-wrapper .preloader-section {
