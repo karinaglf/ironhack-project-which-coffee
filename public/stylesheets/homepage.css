@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 480px;
+    height: 540px;
 }
 .heading-box {
     width: 48vw;
@@ -50,7 +50,7 @@
 }
 .quiz-container {
     background-image: url(/images/img-bg-cta-quiz.jpeg);
-    background-position: bottom;
+    background-position: center;
     background-size: center;
     background-repeat: no-repeat;
     min-height: 580px;
@@ -68,7 +68,7 @@
     outline: 5px solid var(--pink);
     outline-offset: -20px;
     padding: 40px;
-    margin-left: -80px;
+    margin-left: -160px;
 }
 
 
