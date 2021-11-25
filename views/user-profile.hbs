@@ -8,7 +8,7 @@
 <h2>Hello {{user.username}}!</h2>
 
 <div class="favorites-row">
-<h3>Favorite Coffees</h3>
+<h3>Your Favorite Coffees💛</h3>
     <div class="container">
         <div class="row gy-5">
           {{#each user.favoriteCoffees}}
@@ -26,17 +26,22 @@
 <h3>My Company</h3>
     <div class="container">
         <div class="row gy-5">
-          {{#each user.roaster}}
-          <div class="col-sm col-lg-3">
-            {{this.name}}
-          </div>
-          {{/each}}
+          <div class=“col-sm col-lg-3”>
+          <div class="listing-card">
+              <div class="card-img" style="background-image: url({{user.roaster.logo}})"></div>
+              <div class="card-info">
+                <h3>{{user.roaster.name}}</h3>
+                <p>{{user.roaster.location.city}}, {{user.roaster.location.country}}</p>
+                <a href="/roasters/detail/{{this._id}}">See Details</a>
+              </div>
+            </div>
         </div>
     </div>
 </div>
+</div>
 <div class="manage-profile-row">
-  <a href="/roasters/create-roaster">Create a Roaster Profile</a><br>
-  <a href="/coffees/create-coffee">Create a Coffee</a><br>
+  <a href="/roasters/create-roaster" class="btn">Create a Roaster Profile</a><br>
+  <a href="/coffees/create-coffee" class="btn">Create a Coffee</a><br>
 </div>
 {{/if}}
 </div>

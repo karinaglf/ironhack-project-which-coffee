@@ -1,23 +1,46 @@
 .profile-container {
-    background-image: url(/images/img-bg-profile.jpeg);
-    background-position: bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 850px;
-    padding: 60px 60px 60px 200px; 
+  background-image: url(/images/img-bg-profile.jpeg);
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 850px;
+  padding: 60px 60px 60px 200px;
 }
 .favorites-row {
-    min-height: 150px;
-    border: 1px solid black;
+  min-height: 150px;
+  border: 1px solid black;
 }
 .roaster-row {
-    min-height: 150px;
-    border: 1px solid black;
+  min-height: 150px;
+  border: 1px solid black;
 }
 .manage-profile-row {
-    min-height: 150px;
+  min-height: 150px;
 }
 .my-company {
-    min-height: 150px;
-    border: 1px solid black;
+  min-height: 150px;
+  border: 1px solid black;
+}
+
+h2,
+h3 {
+  color: var(--burgundy);
+}
+
+.btn {
+  margin-top: 20px;
+  background-color: var(--magenta);
+  border: none;
+  color: white;
+}
+.btn:hover {
+  background-color: var(--burgundy);
+  color: white;
+}
+
+.btn-link {
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--burgundy);
 }
