@@ -1,10 +1,44 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/homepage.css" />
 </head>
 
-<div class="hero">
+<div class="hero-row">
     <div class="heading-box">
         <h1>Discover specialty coffees from the greatest roasters</h1>
     </div>
 </div>
 
+<div class="cta-row">
+    <a href="/coffees">Coffes</a>
+    <a href="/roasters">Roasters</a>
+    <a href="#">Weekly</a>
+</div>
+
+<div class="coffees-row">
+    <h2>Our Coffee Selection</h2>
+    <div class="container">
+        <div class="row gy-5">
+          {{#each user.favoriteCoffees}}
+          <div class="col-sm col-lg-3">
+            {{> coffeecard}}
+          </div>
+          {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="container quiz-container">
+  <div class="row quiz-cta d-flex">
+    <div class="col align-self-center">
+      <img class="cta-quiz-img" src="/images/img-filtered-coffee.jpeg" alt="" srcset="">
+    </div>
+    <div class="col align-self-center">
+      <div class="quiz-cta-box ">
+          <h3>Wondering what kind of <strong>coffee</strong> better fits your <strong>taste?</strong></h3>
+          <p>Take the quiz and get your origin coffee match!</p>
+          <button class="btn">Take Quiz</button>
+      </div>
+    </div>
+  </div>
+</div>

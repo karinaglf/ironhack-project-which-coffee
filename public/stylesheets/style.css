@@ -18,13 +18,11 @@
 
 /* GENERAL */
 
-body{
+body {
   background-color: var(--beige);
 }
 
 main {
-  max-width: 1320px;
-  padding: 50px;
   margin: 0 auto;
 }
 
@@ -46,12 +44,13 @@ a:hover {
 
 .btn {
   margin-top: 20px;
-  background-color: var(--burgundy);
-  border: none;
-}
-
-.btn:hover {
   background-color: var(--magenta);
+  border: none;
+  color: white;
+}
+.btn:hover {
+  background-color: var(--burgundy);
+  color: white;
 }
 
 .btn-link {
@@ -103,21 +102,19 @@ a:hover {
 
 /* FOOTER */
 footer {
-  padding: 40px;
-}
-/* HOMEPAGE */
-.heading-box {
   background-color: var(--green);
   outline: 10px solid var(--green);
   outline-offset: 6px;
-  padding: 10px;
-  border-radius: 3px;
-}
-.heading-box h1 {
+  padding: 15px;
+  margin: 20px;
   color: var(--beige);
   text-align: center;
+  font-size: 1.5rem;
 }
-
+footer a {
+  color: var(--beige);
+  text-decoration: underline;
+}
 /* SEARCH FORMS */
 .search-listing-form {
   border-radius: 15px;

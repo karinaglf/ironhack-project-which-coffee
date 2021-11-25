@@ -6,6 +6,12 @@ document.addEventListener(
   false
 );
 
+// OWL CAROUSEL
+$(document).ready(function(){
+  $(".owl-carousel").owlCarousel();
+});
+
+
 // QUIZ 
 
 let step = document.getElementsByClassName('step');
