@@ -23,11 +23,13 @@ router.get('/coffee-search', (req, res) => {
   console.log('req.query', req.query); //URL query values
   const coffeeName = req.query.name; //Grab the value from the query
   const originCountry = req.query.originCountry; //Grab the value from the query
+  const coffeeFlavor = req.query.flavor; //Grab the value from the query
 
   //call the DB and find all the coffees that match the name
   Coffee.find({
     name: { $regex: coffeeName, $options: 'i' },
     originCountry: { $regex: originCountry, $options: 'i' },
+    flavor: { $regex: coffeeFlavor, $options: 'i' },
   }) //makes it case sensitive and looks for any letter present in the title
     .then((foundCoffees) => {
       //render the page and display the found coffees
@@ -43,7 +45,6 @@ router.get('/coffees/detail/:coffeeId', (req, res) => {
   const user = req.session.user;
   console.log('req.params', req.params);
   const coffeeId = req.params.coffeeId;
-  
 
   Coffee.findById(coffeeId)
     .populate('roaster')
