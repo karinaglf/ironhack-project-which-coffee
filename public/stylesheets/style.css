@@ -28,9 +28,11 @@ main {
 
 p, li {
   font-family: var(--body-font-family);
+  font-size: 1.3rem;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font-family);
+  font-weight: bold;;
 }
 
 a {
@@ -89,6 +91,10 @@ a:hover {
 
 .navbar .dropdown-menu {
   background-color: var(--beige);
+}
+
+.navbar .dropdown-menu li {
+  font-size: 1rem;
 }
 
 .navbar .dropdown-item:hover {

@@ -1,6 +1,15 @@
 main{
-    padding: 80px 0;
+    padding: 80px 80px;
 }
-.coffees-row {
+h1 {
+    font-weight: bold;
+    color: var(--burgundy);
+}
+/* ROASTER */
+.coffees-list-section {
+    margin-top: 80px;
     min-height: 200px;
+}
+.roaster-logo {
+    width:300px;
 }

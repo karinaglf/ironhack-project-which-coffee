@@ -34,6 +34,13 @@ const progress = (value) => {
 }
 
 nextBtn.addEventListener('click', () => {
+  let radioInputA = document.getElementById(`q_${current_step + 1}_a`);
+  let radioInputB = document.getElementById(`q_${current_step + 1}_b`);
+
+  if(!radioInputA.checked && !radioInputB.checked) {
+    return
+  }
+
   current_step++;
   let previous_step = current_step - 1;
   if ((current_step > 0) && (current_step <= stepCount)) {

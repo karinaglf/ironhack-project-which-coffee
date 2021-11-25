@@ -3,35 +3,32 @@
     <link rel="stylesheet" href="/stylesheets/details-view.css" />
 </head>
 
-<h2>Roaster Details</h2>
-<div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4 col-sm">
-      <img src="{{oneRoaster.logo}}" alt="roaster logo" width="300px">
+<div class="container roaster-info-section">
+    <div class="row">
+      <div class="col-lg-4 col-sm">
+        <img src="{{oneRoaster.logo}}" alt="roaster logo" class="roaster-logo">
+      </div>
+      <div class="col-lg-8 col-sm">
+          <h1>{{oneRoaster.name}}</h1>
+          </hr>
+          <p><strong>Country: </strong>{{oneRoaster.location.country}}</p>
+          <p><strong>City: </strong> {{oneRoaster.location.city}}</p>
+          <p><strong>Description: </strong> {{oneRoaster.description}}</p>
+          <strong><a href="{{oneRoaster.website}}">Website</a></strong>
+      </div>
     </div>
-    <div class="col-lg-8 col-sm">
-        <h3>{{oneRoaster.name}}</h3>
-        <p><strong>Country: </strong>{{oneRoaster.location.country}}</p>
-        <p><strong>City: </strong> {{oneRoaster.location.city}}</p>
-        <p><strong>Description: </strong> {{oneRoaster.description}}</p>
-        <a href="{{oneRoaster.website}}">Website</a>
-    </div>
-  </div>
-  <div>
-  <div class="coffees-row">
-      <h3>The Coffees</h3>
-        <div class="container">
+      <div class="container coffees-list-section">
+        <h2>{{oneRoaster.name}}' Coffees</h2>
         <div class="row gy-5">
           {{#each coffeesList}}
           <div class="col-sm col-lg-3">
             {{> coffeecard}}
           </div>
-          {{/each}}
+          {{/each}} 
         </div>
     </div>
 </div>
-  </div>
+</div>
 </div>
   <a href='/roasters/edit-roaster/{{oneRoaster._id}}'>Edit Roaster</a><br>
   <form action='/roasters/detail/{{oneRoaster._id}}/delete' method='POST'>
