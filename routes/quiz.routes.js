@@ -46,8 +46,8 @@ router.post('/quiz', (req, res) => {
 
   Coffee.find({ originCountry: { $in: originCountries } }) 
     .then((foundCoffees) => {
-      res.render('coffees/coffees-listing', {
-        coffeesList: foundCoffees, user
+      res.render('quiz/quiz-result', {
+        coffeesList: foundCoffees, user, originCountries
       });
     });
 });

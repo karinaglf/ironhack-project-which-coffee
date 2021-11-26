@@ -1,10 +1,13 @@
-<h2>QUIZ RESULT</h2>
+<head>
+    <link rel="stylesheet" href="/stylesheets/quiz-style.css" />
+</head>
 
-<h2>Hello {{user.username}}</h2>
+<div class="quiz-result-section">
+<h2>Hey, {{user.username}}!</h2>
 
-<h3>Your origin coffee match is:{{coffeesList.originCountry}}</h3>
+<p class="countries-result"><strong>Your origin coffee match is: </strong>{{originCountries}}</p>
 
-<h3>Here is a selection of coffees from {{coffeesList.originCountry}}</h3>
+<hr>
     <div class="container">
         <div class="row gy-5">
           {{#each coffeesList}}
@@ -14,3 +17,4 @@
           {{/each}}
         </div>
     </div>
+</div>

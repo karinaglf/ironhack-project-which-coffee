@@ -404,3 +404,20 @@ input[type='radio']:hover {
     padding-top: 45px;
   }
 }
+/* RESULT PAGE*/
+h1,
+h2 {
+  color: var(--burgundy);
+}
+.quiz-result-section {
+  background-image: url(/images/img-bg-profile.jpeg);
+  background-position: top left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 60px 60px 60px 200px;
+}
+.countries-result {
+  font-size: 1.8rem;
+  margin: 30px 0;
+}
+

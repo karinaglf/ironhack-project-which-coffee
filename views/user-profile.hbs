@@ -11,6 +11,7 @@
 <h2>Manage business account   ☕</h2>
   <div class="row mt-5">
     <div class="col-8">
+      {{#if user.roaster}}
       <div class="row my-business-card">
          <div class="col">
            <img src="{{user.roaster.logo}}">
@@ -21,6 +22,12 @@
            <a href="/roasters/detail/{{user.roaster._id}}">See Details</a>
           </div>
       </div>
+      {{else}}
+      <div class="help-section">
+        <p>You haven't created a roaster profile yet!</p>
+        <p>Click on the buttons to create a profile and then create your coffees pages!</p>
+    </div>
+      {{/if}}
     </div>
 
     <div class="col-3 d-flex flex-column">
@@ -35,6 +42,8 @@
 {{/if}}
 <div class="favorites-row">
 <h2>Your Favorite Coffees 💛</h2>
+    {{#if user.favoriteCoffees}}
+
     <div class="container favorites-listing">
         <div class="row gy-5">
           {{#each user.favoriteCoffees}}
@@ -44,6 +53,15 @@
           {{/each}}
         </div>
     </div>
+    {{else}}
+    <div class="help-section">
+    <p>You don't have any favorite coffees yet!</p>
+    <p>Take the quiz and discover coffees according with your taste.</p>
+    <a href="/quiz" class="btn">Take Quiz</a>
+    </div>
+
+    {{/if}}
+    
 </div>
 
 </div>
