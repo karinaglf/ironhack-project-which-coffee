@@ -153,3 +153,16 @@ footer a {
   background-color: transparent;
   border: none;
 }
+
+/* ERROR PAGES */
+.error-section {
+  background-image: url(/images/img-bg-error-page.jpeg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 540px;
+}
