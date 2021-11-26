@@ -1,5 +1,5 @@
 main {
-    padding: 80px 80px;
+    padding: 60px 80px;
 }
 h1 {
     font-weight: bold;
@@ -13,7 +13,7 @@ h2 {
     margin-top: 50px;
 }
 .btn {
-    width: 150px;
+    width: 180px;
     margin-right: 10px;
 }
 /* ROASTER */

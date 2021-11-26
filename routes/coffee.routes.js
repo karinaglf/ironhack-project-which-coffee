@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Coffee = require('../models/Coffee.model');
 const fileUploader = require('../config/cloudinary.config');
 const User = require('./../models/User.model');
+const isLoggedIn = require('./../middleware/isLoggedIn');
 const isRoaster = require('./../middleware/isRoaster');
 const Roaster = require('../models/Roaster.model');
 
@@ -172,7 +173,7 @@ router.post(
 );
 
 // POST - Add Coffee as Favorite
-router.post('/coffees/detail/:coffeeId/add-favorite', (req, res) => {
+router.post('/coffees/detail/:coffeeId/add-favorite', isLoggedIn, (req, res) => {
   const userId = req.session.user._id;
   const theCoffee = req.params.coffeeId;
 

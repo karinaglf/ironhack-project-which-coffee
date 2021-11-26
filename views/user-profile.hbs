@@ -4,11 +4,38 @@
 
 <div class="profile-container">
 
-<h2>Hello {{user.username}}!</h2>
+<h1>Hello {{user.username}}!</h1>
+<hr>
+{{#if isRoaster}}
+<div class="container roaster-section">
+<h2>Manage business account  ☕</h2>
+  <div class="row mt-5">
+    <div class="col-8">
+      <div class="row my-business-card">
+         <div class="col">
+           <img src="{{user.roaster.logo}}">
+         </div>
+         <div class="col align-self-center">
+           <h3>{{user.roaster.name}}</h3>
+           <p>{{user.roaster.location.city}}, {{user.roaster.location.country}}</p>
+           <a href="/roasters/detail/{{user.roaster._id}}">See Details</a>
+          </div>
+      </div>
+    </div>
 
+    <div class="col-3 d-flex flex-column">
+      <a href="/roasters/create-roaster" class="btn">Create Roaster Profile</a>
+      <a href='/roasters/edit-roaster/{{user.roaster._id}}' class="btn">Edit Roaster Profile</a>
+      <a href="/coffees/create-coffee" class="btn">Add a new Coffee</a>
+    </div>
+  </div>
+</div>
+
+<hr>
+{{/if}}
 <div class="favorites-row">
-<h3>Your Favorite Coffees💛</h3>
-    <div class="container">
+<h2>Your Favorite Coffees💛</h2>
+    <div class="container favorites-listing">
         <div class="row gy-5">
           {{#each user.favoriteCoffees}}
           <div class="col-sm col-lg-3">
@@ -19,30 +46,6 @@
     </div>
 </div>
 
-<div class="roaster-row">
-{{#if isRoaster}}
-<div class="my-company">
-<h3>My Company</h3>
-    <div class="container">
-        <div class="row gy-5">
-          <div class=“col-sm col-lg-3”>
-          <div class="listing-card">
-              <div class="card-img" style="background-image: url({{user.roaster.logo}})"></div>
-              <div class="card-info">
-                <h3>{{user.roaster.name}}</h3>
-                <p>{{user.roaster.location.city}}, {{user.roaster.location.country}}</p>
-                <a href="/roasters/detail/{{this._id}}">See Details</a>
-              </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<div class="manage-profile-row">
-  <a href="/roasters/create-roaster" class="btn">Create a Roaster Profile</a><br>
-  <a href="/coffees/create-coffee" class="btn">Create a Coffee</a><br>
-</div>
-{{/if}}
 </div>
 
 

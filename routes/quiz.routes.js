@@ -1,12 +1,15 @@
 const router = require('express').Router();
 const Coffee = require('../models/Coffee.model');
 const User = require('./../models/User.model');
+const isLoggedIn = require('./../middleware/isLoggedIn');
 
-router.get('/quiz', (req, res) => {
-  res.render('quiz/quiz-form');
+router.get('/quiz', isLoggedIn, (req, res) => {
+  const user = req.session.user;
+  res.render('quiz/quiz-form', {user});
 });
 
 router.post('/quiz', (req, res) => {
+  const user = req.session.user;
   const { q_1, q_2, q_3, q_4, q_5, q_6 } = req.body;
   const combination = q_1 + q_2 + q_3 + q_4 + q_5; // "abababa"
 
@@ -41,10 +44,10 @@ router.post('/quiz', (req, res) => {
 
   const originCountries = dictionary[combination]; 
 
-  Coffee.find({ originCountry: { $in: originCountries } }) //
+  Coffee.find({ originCountry: { $in: originCountries } }) 
     .then((foundCoffees) => {
       res.render('coffees/coffees-listing', {
-        coffeesList: foundCoffees,
+        coffeesList: foundCoffees, user
       });
     });
 });

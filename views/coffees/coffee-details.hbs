@@ -4,11 +4,11 @@
 
 <div>
 <div class="container">
-  <div class="row">
+  <div class="row align-items-end">
     <div class="col-lg-4 col-sm">
            <h1>{{oneCoffee.name}}</h1>
       <form action='/coffees/detail/{{oneCoffee._id}}/add-favorite' method='POST'>
-        <button type='submit' class="favorite-btn"><span class="favorite-button-icon fa fa-heart-o"></span></button>
+        <button type='submit' class="favorite-btn"><span class="favorite-button-icon fa fa-heart-o fa-lg"> Add to Favorites</span></button>
       </form>
 
     {{!-- error message display: --}} 
@@ -20,12 +20,12 @@
       <img src="{{oneCoffee.image}}" alt="coffee image" width="300px">
     </div>
     <div class="col-lg-8 col-sm">
-        <p><strong>Process: </strong>{{oneCoffee.process}}</p>
+        <p class="text-capitalize"><strong>Process: </strong>{{oneCoffee.process}}</p>
         <p><strong>Origin Country: </strong> {{oneCoffee.originCountry}}</p>
-        <p><strong>Variety: </strong>{{oneCoffee.variety}}</p>
-        <p><strong>Roast Type: </strong>{{oneCoffee.roastType}}</p>
+        <p class="text-capitalize"><strong>Variety: </strong>{{oneCoffee.variety}}</p>
+        <p class="text-capitalize"><strong>Roast Type: </strong>{{oneCoffee.roastType}}</p>
         <p><strong>Flavor: </strong>{{oneCoffee.flavor}}</p>
-        <p><strong>Roaster: </strong>{{oneCoffee.roaster.name}}</p>
+        <p><strong>Roaster: <a href="/roasters/detail/{{oneCoffee.roaster._id}}">{{oneCoffee.roaster.name}}</a></p></strong>
     </div>
   </div>
 </div>

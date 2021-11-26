@@ -3,7 +3,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 0;
+    padding: 40px 0;
 }
 h2 {
     text-align: center;
@@ -22,7 +22,7 @@ label {
 .auth-form {
     width: 40vw;
 }
-.sign-up-cta {
+.account-cta {
     text-align: center;
     font-size: 1rem;
     font-style: italic;

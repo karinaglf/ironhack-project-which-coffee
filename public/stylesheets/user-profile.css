@@ -1,3 +1,7 @@
+h2,
+h3 {
+  color: var(--burgundy);
+}
 .profile-container {
   background-image: url(/images/img-bg-profile.jpeg);
   background-position: bottom;
@@ -8,39 +12,27 @@
 }
 .favorites-row {
   min-height: 150px;
-  border: 1px solid black;
-}
-.roaster-row {
-  min-height: 150px;
-  border: 1px solid black;
+  margin-top: 10px;
 }
 .manage-profile-row {
   min-height: 150px;
 }
-.my-company {
-  min-height: 150px;
-  border: 1px solid black;
+.roaster-section {
+  margin-bottom: 80px;
 }
-
-h2,
-h3 {
-  color: var(--burgundy);
+.my-business-card {
+  width: 600px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  padding: 20px;
 }
-
-.btn {
-  margin-top: 20px;
-  background-color: var(--magenta);
-  border: none;
-  color: white;
+.my-business-card h3 {
+  font-size: 1.4rem;
 }
-.btn:hover {
-  background-color: var(--burgundy);
-  color: white;
+.my-business-card img {
+  width: 200px;
 }
-
-.btn-link {
-  border: none;
-  background-color: transparent;
-  text-decoration: none;
-  color: var(--burgundy);
+.favorites-listing {
+  margin-top: 50px;
 }

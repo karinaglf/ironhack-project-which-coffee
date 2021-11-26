@@ -67,9 +67,6 @@ a:hover {
 }
 
 /* NAV BAR */
-.nav {
-  margin-bottom: 20px;
-}
 .navbar .navbar-nav .nav-link {
   color: var(--burgundy);
   font-style: italic;
@@ -81,15 +78,17 @@ a:hover {
 }
 
 @media only screen and (min-width: 960px) {
-.navbar .navbar-nav .nav-item .nav-link {
-  padding: 0 0.5rem;
-}
-
+  nav {
+    padding: 0 40px;
+  }
+  .navbar .navbar-nav .nav-item .nav-link {
+    padding: 0 0.5rem;
+  }
+  
 .navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
   border-right: 1px solid var(--burgundy);
   padding: 0 15px;
 
-}
 }
 .navbar .dropdown-menu {
   background-color: var(--beige);
@@ -103,7 +102,7 @@ a:hover {
   background-color: var(--beige);
   color: var(--burgundy);
 }
-
+}
 .logo-nav {
   width: 150px;
 }
