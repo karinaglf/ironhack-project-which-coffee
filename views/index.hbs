@@ -17,14 +17,15 @@
 <div class="coffees-row">
     <h2>Our Coffee Selection</h2>
     <div class="container">
-        <div class="row gy-5">
-          {{#each user.favoriteCoffees}}
-          <div class="col-sm col-lg-3">
+        <div class="row gy-5 random-coffees-row">
+          {{#each randomCoffees}}
+          <div class="col-sm col-lg-3r">
             {{> coffeecard}}
           </div>
           {{/each}}
         </div>
     </div>
+    <a href="/coffees" class="btn">View all coffees</a>
 </div>
 
 <div class="quiz-container">
