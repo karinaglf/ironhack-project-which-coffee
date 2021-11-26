@@ -28,9 +28,11 @@
     </div>
 </div>
 <div class="btn-row">
+  {{#if isRoaster}}
   <a href='/roasters/edit-roaster/{{oneRoaster._id}}' class="btn">Edit Roaster</a><br>
   <form action='/roasters/detail/{{oneRoaster._id}}/delete' method='POST'>
     <button type='submit' class="btn">Delete Roaster</button>
   </form>
+  {{/if}}
   <a href='javascript:history.back()' class="btn">Back</a>
 </div>

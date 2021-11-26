@@ -5,17 +5,22 @@
 <div>
 <div class="container">
   <div class="row align-items-end">
-    <div class="col-lg-4 col-sm">
            <h1>{{oneCoffee.name}}</h1>
+
+      {{#if isFavorite}}
       <form action='/coffees/detail/{{oneCoffee._id}}/add-favorite' method='POST'>
-        <button type='submit' class="favorite-btn"><span class="favorite-button-icon fa fa-heart-o fa-lg"> Add to Favorites</span></button>
+        <button type='submit' class="favorite-btn"><span class="favorite-button-icon fa fa-heart fa-lg"></span>Remove from favorites</button>
+      </form>
+      {{else}}
+
+      <form action='/coffees/detail/{{oneCoffee._id}}/add-favorite' method='POST'>
+      <button type='submit' class="favorite-btn"><span class="favorite-button-icon fa fa-heart-o fa-lg"></span>Add to Favorites</button>
       </form>
 
-    {{!-- error message display: --}} 
-
-      {{#if errorMessage}}
-        <div class="error-message">{{ errorMessage }}</div>
       {{/if}}
+
+
+    <div class="col-lg-4 col-sm">
 
       <img src="{{oneCoffee.image}}" alt="coffee image" width="300px">
     </div>
@@ -30,9 +35,11 @@
   </div>
 </div>
 <div class="btn-row">
+  {{#if isRoaster}}
   <a href='/coffees/edit-coffee/{{oneCoffee._id}}' class="btn">Edit Coffee</a><br>
   <form action='/coffees/detail/{{oneCoffee._id}}/delete' method='POST'>
     <button type='submit' class="btn">Delete</button>
   </form>
+  {{/if}}
   <a href='javascript:history.back()' class="btn">Back</a>
 </div>

@@ -24,3 +24,13 @@ h2 {
 .roaster-logo {
     width:300px;
 }
+/* COFFEE */
+.favorite-btn {
+   font-style: italic;
+   font-size: 1.2rem;
+   margin-bottom: 60px;
+}
+.favorite-button-icon {
+    color: var(--magenta);
+    padding-right: 15px;
+}

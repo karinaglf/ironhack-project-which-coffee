@@ -41,12 +41,18 @@ router.get('/roasters/detail/:roasterId', (req, res) => {
   console.log('req.params', req.params);
   const roasterId = req.params.roasterId;
 
+  isRoaster = false;
+
+  if (user.profileType === "roaster" ) {
+    isRoaster = true;
+  }
+
   Roaster.findById(roasterId) //
     .then((oneRoaster) => {
       console.log(oneRoaster)
       return Coffee.find({ roaster: roasterId })
       .then((coffeesList) => {
-        res.render('roasters/roaster-details', { oneRoaster, coffeesList, user });
+        res.render('roasters/roaster-details', { oneRoaster, coffeesList, user, isRoaster });
       })
     });
 });

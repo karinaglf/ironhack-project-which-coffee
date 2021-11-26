@@ -33,6 +33,10 @@
     text-transform: lowercase;
     font-size: 2rem;
 }
+.cta-row a:hover {
+    color: var(--burgundy);
+    font-weight: bold;
+}
 .coffees-row {
     background-image: url(/images/img-bg-coffee-selection.jpeg);
     background-position: top;
@@ -50,8 +54,6 @@
     font-size: 2.5rem;
 }
 .random-coffees-row {
-    display: flex;
-    justify-content: center;
     padding: 0 200px;
     margin-bottom: 60px;
 }

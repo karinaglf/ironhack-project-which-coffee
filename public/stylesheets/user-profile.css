@@ -1,14 +1,14 @@
-h2,
-h3 {
+h1,
+h2 {
   color: var(--burgundy);
 }
 .profile-container {
   background-image: url(/images/img-bg-profile.jpeg);
   background-position: bottom;
   background-size: cover;
-  background-repeat: no-repeat;
   min-height: 850px;
   padding: 60px 60px 60px 200px;
+  background-repeat: repeat-y;
 }
 .favorites-row {
   min-height: 150px;

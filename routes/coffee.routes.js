@@ -47,11 +47,29 @@ router.get('/coffees/detail/:coffeeId', (req, res) => {
   console.log('req.params', req.params);
   const coffeeId = req.params.coffeeId;
 
-  Coffee.findById(coffeeId)
-    .populate('roaster')
-    .then((oneCoffee) => {
-      res.render('coffees/coffee-details', { oneCoffee, user });
-    });
+  let isFavorite = false;
+  let isRoaster = false
+  
+  User.findById(user._id)
+    .then((currentUser) => {
+      const currentFavorites = currentUser.favoriteCoffees;
+      console.log(`currentFavorites`, currentFavorites)
+
+      if(currentFavorites.includes(coffeeId)) {
+        isFavorite = true;
+      }
+
+      if (currentUser.profileType === "roaster" ) {
+        isRoaster = true;
+      }
+
+      console.log(`isFavorite`, isFavorite)
+      Coffee.findById(coffeeId)
+        .populate('roaster')
+        .then((oneCoffee) => {
+          res.render('coffees/coffee-details', { oneCoffee, user, isFavorite, isRoaster});
+        });
+    })
 });
 
 //GET /coffees/create-coffee
