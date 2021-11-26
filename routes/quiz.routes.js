@@ -40,6 +40,7 @@ router.post('/quiz', (req, res) => {
     ababb: ['Brazil', 'Panama'],
     babab: ['Brazil', 'Costa Rica', 'Panama'],
     aabbb: ['Brazil', 'Costa Rica'],
+    babba: ['Brazil', 'Panama'],
   };
 
   const originCountries = dictionary[combination]; 
