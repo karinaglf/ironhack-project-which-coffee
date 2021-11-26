@@ -43,7 +43,7 @@ router.get('/roasters/detail/:roasterId', (req, res) => {
 
   isRoaster = false;
 
-  if (user.profileType === "roaster" ) {
+  if (user && user.profileType === "roaster" ) {
     isRoaster = true;
   }
 

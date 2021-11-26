@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row align-items-end">
            <h1>{{oneCoffee.name}}</h1>
-
+   {{#if user}}  
       {{#if isFavorite}}
       <form action='/coffees/detail/{{oneCoffee._id}}/add-favorite' method='POST'>
         <button type='submit' class="favorite-btn"><span class="favorite-button-icon fa fa-heart fa-lg"></span>Remove from favorites</button>
@@ -18,7 +18,7 @@
       </form>
 
       {{/if}}
-
+   {{/if}}
 
     <div class="col-lg-4 col-sm">
 
@@ -34,6 +34,7 @@
     </div>
   </div>
 </div>
+ {{#if user}}
 <div class="btn-row">
   {{#if isRoaster}}
   <a href='/coffees/edit-coffee/{{oneCoffee._id}}' class="btn">Edit Coffee</a><br>
@@ -43,3 +44,4 @@
   {{/if}}
   <a href='javascript:history.back()' class="btn">Back</a>
 </div>
+{{/if}}

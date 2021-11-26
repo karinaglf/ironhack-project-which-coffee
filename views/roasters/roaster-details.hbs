@@ -27,6 +27,7 @@
         </div>
     </div>
 </div>
+{{#if user}}
 <div class="btn-row">
   {{#if isRoaster}}
   <a href='/roasters/edit-roaster/{{oneRoaster._id}}' class="btn">Edit Roaster</a><br>
@@ -36,3 +37,4 @@
   {{/if}}
   <a href='javascript:history.back()' class="btn">Back</a>
 </div>
+{{/if}}
