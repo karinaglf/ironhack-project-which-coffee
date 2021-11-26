@@ -3,14 +3,16 @@ main {
 }
 
 /* SEARCH FORMS */
+.sticky-items {
+  position: sticky;
+  top: 80px;
+}
 .search-listing-form {
     border-radius: 15px;
     background-color: #335b523a;
     padding: 35px;
     margin-bottom: 50px;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-    position: sticky;
-    top: 80px;
   }
 
   .search-listing-form label {
@@ -28,4 +30,17 @@ main {
     text-transform: uppercase;
     font-weight: bold;
   }
+  #img-coffee-search {
+    background-image: url("/images/img-coffee-search.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    margin-top: -20px;
+  }
+  @media only screen and (max-width: 480px) {
+    #img-coffee-search {
+       display: none;
+    }
+}
   

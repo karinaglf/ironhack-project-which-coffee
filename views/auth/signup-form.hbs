@@ -1,6 +1,14 @@
 <head>
     <link rel="stylesheet" href="/stylesheets/forms.css" />
 </head>
+
+<div class="auth-page">
+{{!-- error message display: --}} 
+{{#if errorMessage}}
+  <div class="error-message">{{ errorMessage }}</div>
+{{/if}}
+
+<div>
 <form id="form" action="/signup" method="POST" class="auth-form">
   <h2>Sign Up</h2>
   <div class="mb-3">
@@ -37,9 +45,5 @@
   <p class="account-cta">Already registered? <a href="/login">Login</a></p>
 
 </form>
-
-{{!-- error message display: --}} 
-
-{{#if errorMessage}}
-  <div class="error-message">{{ errorMessage }}</div>
-{{/if}}
+</div>
+</div>

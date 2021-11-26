@@ -5,7 +5,8 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3 col-sm">
-      <form action='/coffee-search' method='GET' class="search-listing-form fixedElement">
+      <div class="sticky-items">
+      <form action='/coffee-search' method='GET' class="search-listing-form">
         <div class="form-group">
             <label for="coffeeNameInput">Coffee Name</label>
             <input type="text" name="name" class="form-control" id="coffeeNameInput">
@@ -20,9 +21,8 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block">Search</button>
         </form>
-
-        <div id="coffee-splash"></div>
-
+        <div id="img-coffee-search"></div>
+        </div>
     </div>
     <div class="col-lg-9 col-sm">
       <div class="container">

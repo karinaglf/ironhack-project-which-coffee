@@ -19,8 +19,27 @@ form {
 label {
     font-weight: bold;
 }
+.auth-page {
+    background-image: url(/images/img-bg-login-page.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 540px;
+    width: 100%
+}
 .auth-form {
     width: 40vw;
+}
+.error-message {
+    background-color: var(--burgundy);
+    font-size: 1.5rem;
+    color: white;
+    padding: 2px 15px;
+    margin-bottom: 20px;
 }
 .account-cta {
     text-align: center;
@@ -67,4 +86,10 @@ input[type='password']:focus {
   -moz-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
+}
+/* MEDIA QUERIES */
+@media only screen and (max-width: 480px) {
+    form, .auth-form {
+        width: 90vw;
+    }
 }

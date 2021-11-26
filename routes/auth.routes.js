@@ -22,11 +22,12 @@ router.post('/signup', (req, res) => {
   console.log('req.body', req.body);
 
   const usernameNotProvided = !username || username === '';
+  const emailNotProvided = !email || email === '';
   const passwordNotProvided = !password || password === '';
 
-  if (usernameNotProvided || passwordNotProvided) {
+  if (usernameNotProvided || emailNotProvided ||passwordNotProvided) {
     res.render('auth/signup-form', {
-      errorMessage: 'You need to give a username and password',
+      errorMessage: 'You need to give a username, email, and password',
     });
     return;
   }
@@ -40,10 +41,10 @@ router.post('/signup', (req, res) => {
     });
     return;
   }
-  User.findOne({ username: username })
+  User.findOne({ email: email })
     .then((foundUser) => {
       if (foundUser) {
-        throw new Error('This username is already taken');
+        throw new Error('This email already has an account');
       }
       return bcrypt.genSalt(saltRounds);
     })
