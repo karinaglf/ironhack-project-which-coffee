@@ -5,7 +5,7 @@ const isLoggedIn = require('./../middleware/isLoggedIn');
 
 router.get('/quiz', isLoggedIn, (req, res) => {
   const user = req.session.user;
-  res.render('quiz/quiz-form', {user});
+  res.render('quiz/quiz-form', { user });
 });
 
 router.post('/quiz', (req, res) => {
@@ -27,6 +27,7 @@ router.post('/quiz', (req, res) => {
     baaaa: ['Ethiopia', 'Kenya'],
     babaa: ['Kenya', 'Rwanda'],
     ababa: ['Kenya', 'Rwanda'],
+    abaab: ['Kenya', 'Rwanda'],
     bbaaa: ['Ethiopia'],
     bbbbb: ['Colombia', 'Brazil', 'Costa Rica'],
     babbb: ['Brazil', 'Costa Rica'],
@@ -43,14 +44,17 @@ router.post('/quiz', (req, res) => {
     babba: ['Brazil', 'Panama'],
   };
 
-  const originCountries = dictionary[combination]; 
+  const originCountries = dictionary[combination];
 
-  Coffee.find({ originCountry: { $in: originCountries } }) 
-    .then((foundCoffees) => {
+  Coffee.find({ originCountry: { $in: originCountries } }).then(
+    (foundCoffees) => {
       res.render('quiz/quiz-result', {
-        coffeesList: foundCoffees, user, originCountries
+        coffeesList: foundCoffees,
+        user,
+        originCountries,
       });
-    });
+    }
+  );
 });
 
 module.exports = router;
