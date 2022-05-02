@@ -131,11 +131,3 @@ coffees: [{ type: Schema.Types.ObjectId, ref: 'Coffee' }],
 ### Heroku
 
 [Deploy Link](https://which-coffee.herokuapp.com/)
-
-### **Project Management**
-
-[Notion Page](https://www.notion.so/Project-Which-Coffee-323ebe1af0e349678bb803fc34621390)
-
-### **Slides**
-
-[Our Presentation]

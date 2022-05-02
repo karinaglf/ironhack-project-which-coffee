@@ -303,6 +303,10 @@ input[type='radio']:hover {
 }
 
 @media (max-width: 767px) {
+  .quiz-container {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
   #qbox-container {
     padding: 30px;
   }

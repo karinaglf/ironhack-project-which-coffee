@@ -39,3 +39,8 @@ h2 {
 .favorites-listing {
   margin-top: 50px;
 }
+@media (max-width: 560px) {
+  .profile-container {
+    padding: 10px;
+  }
+}
